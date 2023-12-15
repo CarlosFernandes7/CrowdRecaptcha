@@ -1,7 +1,6 @@
 // server/controllers/jellyfishController.js
 
-const { getAllJellyfish, getAllJellyfishUnknown, insertJellyfishUnknown } = require('../models/jellyfishModel');
-
+const { getAllJellyfish, getAllJellyfishUnknown, inserirResposta, getRespostasPorJellyfishUnknown, getAllRespostas } = require('../models/jellyfishModel');
 
 function getAllJellyfishController(req, res) {
   getAllJellyfish((error, results) => {
@@ -23,17 +22,46 @@ function getAllJellyfishUnknownController(req, res) {
   });
 }
 
-// Adicione esta função no jellyfishController.js
-function insertJellyfishUnknownController(req, res) {
-  const dataToInsert = req.body; // Supondo que os dados a serem inseridos estão no corpo da solicitação
+function inserirRespostaController(req, res) {
+  const { idJellyfishUnknown, respostaUtilizador } = req.body;
 
-  insertJellyfishUnknown(dataToInsert, (error, results) => {
+  inserirResposta(idJellyfishUnknown, respostaUtilizador, (error, results) => {
     if (error) {
       res.status(500).send(error.message);
     } else {
-      res.json({ message: 'Dados inseridos com sucesso na tabela JellyfishUnknown!' });
+      res.json({ message: 'Resposta inserida com sucesso!' });
     }
   });
 }
 
-module.exports = { getAllJellyfishController, getAllJellyfishUnknownController, insertJellyfishUnknownController };
+function getRespostasPorJellyfishUnknownController(req, res) {
+  const { idJellyfishUnknown } = req.params;
+
+  getRespostasPorJellyfishUnknown(idJellyfishUnknown, (error, results) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else {
+      res.json(results);
+    }
+  });
+}
+
+// Função para obter todas as respostas
+function getAllRespostasController(req, res) {
+  getAllRespostas((error, results) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else {
+      res.json(results);
+    }
+  });
+}
+
+
+module.exports = {
+  getAllJellyfishController,
+  getAllJellyfishUnknownController,
+  inserirRespostaController,
+  getRespostasPorJellyfishUnknownController,
+  getAllRespostasController,
+};
