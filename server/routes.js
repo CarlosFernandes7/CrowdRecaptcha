@@ -5,6 +5,7 @@ const {
   getAllJellyfishUnknownController,
   inserirRespostaController,
   getRespostasPorJellyfishUnknownController,
+  getAllRespostasController
 } = require('./controllers/jellyfishController');
 
 function setupRoutes(app) {
@@ -19,22 +20,22 @@ function setupRoutes(app) {
    * @swagger
    * /jellyfish:
    *   get:
-   *     summary: Retorna todos os registros da tabela Jellyfish
+   *     summary: Retorna todos os registos da tabela Jellyfish
    *     tags: [Jellyfish]
    *     responses:
    *       200:
-   *         description: Sucesso. Retorna a lista de registros Jellyfish
+   *         description: Sucesso. Retorna a lista de registos Jellyfish
    */
 
   /**
    * @swagger
    * /jellyfishUnknown:
    *   get:
-   *     summary: Retorna todos os registros da tabela JellyfishUnknown
+   *     summary: Retorna todos os registos da tabela JellyfishUnknown
    *     tags: [Jellyfish]
    *     responses:
    *       200:
-   *         description: Sucesso. Retorna a lista de registros JellyfishUnknown
+   *         description: Sucesso. Retorna a lista de registos JellyfishUnknown
    */
 /**
  * @swagger
@@ -91,10 +92,25 @@ function setupRoutes(app) {
    *       200:
    *         description: Boas-vindas ao meu aplicativo Express com MySQL e JellyfishDB
    */
+
+  /**
+ * @swagger
+ * /respostas:
+ *   get:
+ *     summary: Retorna todas as respostas na tabela de respostas
+ *     tags: [Jellyfish]
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna a lista de todas as respostas.
+ */
+
   app.get('/jellyfish', getAllJellyfishController);
   app.get('/jellyfishUnknown', getAllJellyfishUnknownController);
   app.post('/respostas', inserirRespostaController);
   app.get('/respostas/:idJellyfishUnknown', getRespostasPorJellyfishUnknownController);
+  app.get('/respostas', getAllRespostasController); // Adicionando a rota para obter todas as respostas
+
+
   app.get('*', (req, res) => {
     res.send('Bem-vindo ao meu aplicativo Express com MySQL e JellyfishDB!');
   });

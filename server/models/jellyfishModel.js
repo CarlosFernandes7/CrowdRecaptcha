@@ -229,16 +229,6 @@ function verificarNovasImagens() {
 // Inicia o processo de verificação de novas imagens
 verificarNovasImagens();
 
-
-
-
-
-
-
-
-
-
-
 // Função para inserir respostas na tabela respostas
 function inserirResposta(idJellyfishUnknown, respostaUtilizador, callback) {
   const sql = 'INSERT INTO respostas (id_jellyfishunknown, resposta_utilizador) VALUES (?, ?)';
