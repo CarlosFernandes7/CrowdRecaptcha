@@ -1,5 +1,5 @@
 // server/app.js
-
+const { swaggerUi, specs } = require('./swagger');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -15,6 +15,10 @@ const { setupRoutes } = require('./routes');
 
 // Use the CORS middleware
 app.use(cors());
+
+// Rota swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 
 // Connect to MySQL
 connectToDatabase();
