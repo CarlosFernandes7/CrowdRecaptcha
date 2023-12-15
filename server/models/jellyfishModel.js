@@ -46,5 +46,3 @@ function insertJellyfishUnknown(data, callback) {
 
 module.exports = { getAllJellyfish, getAllJellyfishUnknown, insertJellyfishUnknown };
 
-
-//comentario teste
