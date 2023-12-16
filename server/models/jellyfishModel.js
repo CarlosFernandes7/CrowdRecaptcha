@@ -1,6 +1,41 @@
 const fs = require('fs');
 const { connection } = require('../database');
 
+
+// Função para inserir um "jellyfish" conhecido no banco de dados
+function inserirJellyfishConhecido(data, callback) {
+  const sql = 'INSERT INTO jellyfish (nome, descricao, nome_imagem) VALUES (?, ?, ?)';
+  const values = [data.nome, data.descricao, data.nome_imagem];
+
+  connection.query(sql, values, (error, results) => {
+    if (error) {
+      console.error('Erro ao inserir "jellyfish" conhecido no banco de dados:', error);
+      return callback(error);
+    }
+
+    console.log('Jellyfish conhecido adicionado com sucesso:', data.nome);
+    callback(null, results);
+  });
+}
+
+
+
+// Função para excluir um "jellyfish" conhecido por ID no banco de dados
+function excluirJellyfishConhecidoPorId(id, callback) {
+  const sql = 'DELETE FROM jellyfish WHERE id = ?';
+  const values = [id];
+
+  connection.query(sql, values, (error, results) => {
+    if (error) {
+      console.error('Erro ao excluir "jellyfish" conhecido do banco de dados:', error);
+      return callback(error);
+    }
+
+    console.log('Jellyfish conhecido excluído com sucesso, ID:', id);
+    callback(null, results);
+  });
+}
+
 function getAllJellyfish(callback) {
   connection.query('SELECT * FROM jellyfish', (error, results) => {
     callback(error, results);
@@ -187,7 +222,7 @@ function inserirImagensNoBD(dados, callback) {
     }
 
     function verificarNovasImagens() {
-      const caminhoDaPasta = '../assets/JellyFishDesconhecidos';
+       const caminhoDaPasta = '../assets/JellyFishDesconhecidos';
 
       // Inicia a verificação periódica
       setInterval(() => {
@@ -274,4 +309,4 @@ function getAllRespostas(callback) {
   });
 }
 
-module.exports = { getAllJellyfish, getAllJellyfishUnknown, inserirResposta,  getRespostasPorJellyfishUnknown,  getAllRespostas, };
+module.exports = { getAllJellyfish, getAllJellyfishUnknown, inserirResposta, getRespostasPorJellyfishUnknown, getAllRespostas, inserirJellyfishConhecido, excluirJellyfishConhecidoPorId };

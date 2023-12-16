@@ -1,14 +1,67 @@
 // server/routes.js
 
 const {
+  inserirJellyfishConhecidoController,
   getAllJellyfishController,
   getAllJellyfishUnknownController,
   inserirRespostaController,
   getRespostasPorJellyfishUnknownController,
-  getAllRespostasController
+  getAllRespostasController,
+  excluirJellyfishConhecidoController, // Adicionando o novo controlador
 } = require('./controllers/jellyfishController');
 
 function setupRoutes(app) {
+
+/**
+ * @swagger
+ * /jellyfish:
+ *   post:
+ *     summary: Insere um novo Jellyfish conhecido na tabela Jellyfish
+ *     tags: [Jellyfish]
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nome:
+ *                 type: string
+ *               descricao:
+ *                 type: string
+ *               nome_imagem:
+ *                 type: string
+ *             required:
+ *               - nome
+ *               - descricao
+ *               - nome_imagem
+ *             example:
+ *               nome: "Nome do Jellyfish"
+ *               descricao: "Descrição do Jellyfish"
+ *               nome_imagem: "nome_imagem.jpg"
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna uma mensagem indicando que o Jellyfish foi inserido com sucesso.
+ */
+
+ /**
+   * @swagger
+   * /jellyfish/{id}:
+   *   delete:
+   *     summary: Exclui um Jellyfish conhecido por ID
+   *     tags: [Jellyfish]
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: O ID do Jellyfish conhecido a ser excluído
+   *     responses:
+   *       200:
+   *         description: Sucesso. Retorna uma mensagem indicando que o Jellyfish foi excluído com sucesso.
+   */
+
+
   /**
    * @swagger
    * tags:
@@ -104,6 +157,8 @@ function setupRoutes(app) {
  *         description: Sucesso. Retorna a lista de todas as respostas.
  */
 
+  app.post('/jellyfish', inserirJellyfishConhecidoController);
+  app.delete('/jellyfish/:id', excluirJellyfishConhecidoController); // Adicionando a rota para excluir um Jellyfish conhecido
   app.get('/jellyfish', getAllJellyfishController);
   app.get('/jellyfishUnknown', getAllJellyfishUnknownController);
   app.post('/respostas', inserirRespostaController);
