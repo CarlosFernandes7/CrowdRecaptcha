@@ -1,3 +1,33 @@
-<div>
-  Conteúdo do Jellyfish Component
+<div class="jellyfish-container">
+
+  <!-- Display known jellyfish data -->
+  <div *ngIf="backendData">
+    <h2>Jellyfish Conhecidos:</h2>
+    <pre>{{ backendData | json }}</pre>
+  </div>
+
+  <div *ngIf="backendData">
+    <div *ngFor="let jellyfish of backendData" class="jellyfish-item">
+      <h3>{{ jellyfish.nome }}</h3>
+      <img [src]="getImagemUrl(jellyfish.nome_imagem)" alt="{{ jellyfish.nome }}" class="jellyfish-image">
+    </div>
+  </div>
+
+<br>
+<br>
+<br>
+
+  <!-- Display unknown jellyfish data -->
+  <div *ngIf="unknownJellyfishData">
+    <h2>Jellyfish Desconhecidos:</h2>
+    <pre>{{ unknownJellyfishData | json }}</pre>
+  </div>
+
+
+  <div *ngIf="unknownJellyfishData">
+    <div *ngFor="let jellyfishunknown of unknownJellyfishData" class="jellyfish-item">
+      <h3>{{ jellyfishunknown.id }} . {{ jellyfishunknown.nome_imagem }}</h3>
+      <img [src]="getImagemUrlDesconhecidos(jellyfishunknown.nome_imagem)" alt="{{ jellyfishunknown.nome_imagem }}" class="jellyfish-image">
+    </div>
+  </div>
 </div>
