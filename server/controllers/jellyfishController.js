@@ -1,15 +1,16 @@
 // server/controllers/jellyfishController.js
+const fs = require('fs');
 
-const { getAllJellyfish, 
-  getAllJellyfishUnknown, 
-  inserirResposta, 
-  getRespostasPorJellyfishUnknown, 
-  getAllRespostas, 
-  inserirJellyfishConhecido, 
-  excluirJellyfishConhecidoPorId, 
-  getJellyfishUnknownPorId } = require('../models/jellyfishModel');
-
-
+const { getAllJellyfish,
+  getAllJellyfishUnknown,
+  inserirResposta,
+  getRespostasPorJellyfishUnknown,
+  getAllRespostas,
+  inserirJellyfishConhecido,
+  excluirJellyfishConhecidoPorId,
+  getJellyfishUnknownPorId,
+  exportarRespostasParaJSON,
+} = require('../models/jellyfishModel');
 
 
 function inserirJellyfishConhecidoController(req, res) {
@@ -30,7 +31,6 @@ function inserirJellyfishConhecidoController(req, res) {
   });
 }
 
-
 // Função para excluir um "jellyfish" conhecido por ID
 function excluirJellyfishConhecidoController(req, res) {
   const { id } = req.params;
@@ -43,7 +43,6 @@ function excluirJellyfishConhecidoController(req, res) {
     }
   });
 }
-
 
 // Function to retrieve a specific jellyfishUnknown by ID
 function getJellyfishUnknownPorIdController(req, res) {
@@ -61,7 +60,6 @@ function getJellyfishUnknownPorIdController(req, res) {
     }
   });
 }
-
 
 function getAllJellyfishController(req, res) {
   getAllJellyfish((error, results) => {
@@ -82,18 +80,6 @@ function getAllJellyfishUnknownController(req, res) {
     }
   });
 }
-
-// function inserirRespostaController(req, res) {
-//   const { idJellyfishUnknown, respostaUtilizador } = req.body;
-
-//   inserirResposta(idJellyfishUnknown, respostaUtilizador, (error, results) => {
-//     if (error) {
-//       res.status(500).send(error.message);
-//     } else {
-//       res.json({ message: 'Resposta inserida com sucesso!' });
-//     }
-//   });
-// }
 
 function inserirRespostaController(req, res) {
   console.log('Dados do corpo da requisição:', req.body);
@@ -134,6 +120,31 @@ function getAllRespostasController(req, res) {
   });
 }
 
+
+function exportarRespostasParaJSONController(req, res) {
+  const nomeArquivo = 'respostas_exportadas.json';
+
+  // Chamando a função do modelo para obter todas as respostas do banco de dados
+  getAllRespostas((error, results) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else {
+      const respostasJSON = JSON.stringify(results, null, 2);
+
+      // Escrevendo o JSON para um arquivo
+      fs.writeFile(nomeArquivo, respostasJSON, (writeError) => {
+        if (writeError) {
+          console.error('Erro ao escrever arquivo JSON:', writeError);
+          res.status(500).send(writeError.message);
+        } else {
+          console.log(`Conteúdo exportado para ${nomeArquivo} com sucesso.`);
+          res.json({ message: 'Conteúdo exportado com sucesso.', file: nomeArquivo });
+        }
+      });
+    }
+  });
+}
+
 module.exports = {
   getAllJellyfishController,
   getAllJellyfishUnknownController,
@@ -142,5 +153,6 @@ module.exports = {
   getAllRespostasController,
   inserirJellyfishConhecidoController,
   excluirJellyfishConhecidoController,
-  getJellyfishUnknownPorIdController, // Adding the new controller
+  getJellyfishUnknownPorIdController, 
+  exportarRespostasParaJSONController,
 };

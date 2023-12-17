@@ -8,7 +8,9 @@ const {
   inserirRespostaController,
   getRespostasPorJellyfishUnknownController,
   getAllRespostasController,
-  excluirJellyfishConhecidoController, // Adicionando o novo controlador
+  excluirJellyfishConhecidoController,
+  exportarRespostasParaJSONController,
+   // Adicionando o novo controlador
 } = require('./controllers/jellyfishController');
 
 function setupRoutes(app) {
@@ -179,6 +181,22 @@ function setupRoutes(app) {
  *         description: Sucesso. Retorna a lista de todas as respostas.
  */
 
+  /**
+ * @swagger
+ * /export:
+ *   get:
+ *     summary: Exporta respostas para um arquivo JSON.
+ *     description: Esta rota exporta todas as respostas para um arquivo JSON.
+ *     responses:
+ *       200:
+ *         description: Conteúdo exportado com sucesso.
+ *         content:
+ *           application/json:
+ *             example: { "message": "Conteúdo exportado com sucesso.", "file": "respostas_exportadas.json" }
+ *       500:
+ *         description: Erro durante a exportação.
+ */
+
   app.post('/jellyfish', inserirJellyfishConhecidoController);
   app.delete('/jellyfish/:id', excluirJellyfishConhecidoController); // Adicionando a rota para excluir um Jellyfish conhecido
   app.get('/jellyfish', getAllJellyfishController);
@@ -187,6 +205,7 @@ function setupRoutes(app) {
   app.get('/respostas/:idJellyfishUnknown', getRespostasPorJellyfishUnknownController);
   app.get('/respostas', getAllRespostasController); // Adicionando a rota para obter todas as respostas
   app.get('/jellyfishUnknown/:id', getJellyfishUnknownPorIdController);
+  app.get('/export', exportarRespostasParaJSONController);
 
 
   app.get('*', (req, res) => {
