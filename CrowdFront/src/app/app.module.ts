@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';  // Adicione esta linha
 import { JellyfishComponent } from './jellyfish/jellyfish.component';
 import { ApiCrowdsourcingService } from './api-crowdsourcing.service';
 import { HttpClientModule } from '@angular/common/http';
+import { JellyfishRoutingModule } from './jellyfish/jellyfish-routing.module';
 // import { OrderByPipe } from './orderBy.pipe';
 // import { FilterPipe } from './filter.pipe';
 
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,  
-    HttpClientModule
+    HttpClientModule,
+    JellyfishRoutingModule,
   ],
   providers: [ApiCrowdsourcingService],
   bootstrap: [AppComponent]

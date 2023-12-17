@@ -18,21 +18,41 @@
 <br> -->
 
 
-<!-- Display unknown jellyfish data with input fields for responses -->
-<div *ngIf="unknownJellyfishData">
-  <h2>Jellyfish Desconhecidos:</h2>
+  <!-- Display unknown jellyfish data with input fields for responses -->
+  <!-- <div *ngIf="unknownJellyfishData">
+    <h2>Jellyfish Desconhecidos:</h2>
 
-  <div *ngFor="let jellyfishunknown of unknownJellyfishData" class="jellyfish-item">
-    <h3>{{ jellyfishunknown.id }} . {{ jellyfishunknown.nome_imagem }}</h3>
-    <img [src]="getImagemUrlDesconhecidos(jellyfishunknown.nome_imagem)" alt="{{ jellyfishunknown.nome_imagem }}" class="jellyfish-image">
+    <div *ngFor="let jellyfishunknown of unknownJellyfishData" class="jellyfish-item">
+      <h3>{{ jellyfishunknown.id }} . {{ jellyfishunknown.nome_imagem }}</h3>
+      <img [src]="getImagemUrlDesconhecidos(jellyfishunknown.nome_imagem)" alt="{{ jellyfishunknown.nome_imagem }}"
+        class="jellyfish-image">
 
-    <!-- Input field for response -->
-    <label for="response{{ jellyfishunknown.id }}">Resposta:</label>
-    <input type="text" id="response{{ jellyfishunknown.id }}" [(ngModel)]="jellyfishunknown.response" name="response{{ jellyfishunknown.id }}" />
+      <label for="response{{ jellyfishunknown.id }}">Resposta:</label>
+      <input type="text" id="response{{ jellyfishunknown.id }}" [(ngModel)]="jellyfishunknown.response"
+        name="response{{ jellyfishunknown.id }}" />
+      <button (click)="submitResponse(jellyfishunknown)">Enviar Resposta</button>
+    </div>
+  </div>
+</div> -->
 
-    <!-- You can add more fields or customize as needed -->
+<div class="jellyfish-container">
+  <!-- Input field for jellyfishunknown ID -->
+  <label for="jellyfishId">ID do Jellyfish Desconhecido:</label>
+  <input type="text" id="jellyfishId" [(ngModel)]="selectedJellyfishId" />
+  <button (click)="fetchJellyfishById()">Buscar Jellyfish</button>
 
-    <button (click)="submitResponse(jellyfishunknown)">Enviar Resposta</button>
-    
+  <!-- Display selected jellyfishunknown data -->
+  <div *ngIf="selectedJellyfishData">
+    <h2>Jellyfish Desconhecido Selecionado:</h2>
+    <div class="jellyfish-item">
+      <h3>{{ selectedJellyfishData.id }} . {{ selectedJellyfishData.nome_imagem }}</h3>
+      <img [src]="getImagemUrlDesconhecidos(selectedJellyfishData.nome_imagem)" alt="{{ selectedJellyfishData.nome_imagem }}"
+        class="jellyfish-image">
+
+      <label for="response{{ selectedJellyfishData.id }}">Resposta:</label>
+      <input type="text" id="response{{ selectedJellyfishData.id }}" [(ngModel)]="selectedJellyfishData.response"
+        name="response{{ selectedJellyfishData.id }}" />
+      <button (click)="submitResponse(selectedJellyfishData)">Enviar Resposta</button>
+    </div>
   </div>
 </div>
