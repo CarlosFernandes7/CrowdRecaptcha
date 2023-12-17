@@ -4,6 +4,7 @@ const {
   inserirJellyfishConhecidoController,
   getAllJellyfishController,
   getAllJellyfishUnknownController,
+  getJellyfishUnknownPorIdController,
   inserirRespostaController,
   getRespostasPorJellyfishUnknownController,
   getAllRespostasController,
@@ -60,6 +61,27 @@ function setupRoutes(app) {
    *       200:
    *         description: Sucesso. Retorna uma mensagem indicando que o Jellyfish foi excluído com sucesso.
    */
+
+
+/**
+ * @swagger
+ * /jellyfishUnknown/{id}:
+ *   get:
+ *     summary: Retorna um JellyfishUnknown por ID
+ *     tags: [Jellyfish]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: O ID do JellyfishUnknown a ser retornado
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna os detalhes do JellyfishUnknown.
+ *       404:
+ *         description: JellyfishUnknown não encontrado.
+ */
 
 
   /**
@@ -164,6 +186,7 @@ function setupRoutes(app) {
   app.post('/respostas', inserirRespostaController);
   app.get('/respostas/:idJellyfishUnknown', getRespostasPorJellyfishUnknownController);
   app.get('/respostas', getAllRespostasController); // Adicionando a rota para obter todas as respostas
+  app.get('/jellyfishUnknown/:id', getJellyfishUnknownPorIdController);
 
 
   app.get('*', (req, res) => {

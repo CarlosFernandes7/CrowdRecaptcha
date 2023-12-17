@@ -36,6 +36,22 @@ function excluirJellyfishConhecidoPorId(id, callback) {
   });
 }
 
+// Function to retrieve a specific jellyfishUnknown by ID
+function getJellyfishUnknownPorId(id, callback) {
+  const sql = 'SELECT * FROM jellyfishUnknown WHERE id = ?';
+  const values = [id];
+
+  connection.query(sql, values, (error, results) => {
+    if (error) {
+      console.error('Erro ao obter jellyfishUnknown do banco de dados por ID:', error);
+      return callback(error);
+    }
+
+    callback(null, results[0]); // Assuming ID is unique, returning the first result
+  });
+}
+
+
 // function getAllJellyfish(callback) {
 //   connection.query('SELECT * FROM jellyfish', (error, results) => {
 //     callback(error, results);
@@ -334,4 +350,13 @@ function getAllRespostas(callback) {
   });
 }
 
-module.exports = { getAllJellyfish, getAllJellyfishUnknown, inserirResposta, getRespostasPorJellyfishUnknown, getAllRespostas, inserirJellyfishConhecido, excluirJellyfishConhecidoPorId };
+module.exports = {
+  getAllJellyfish,
+  getAllJellyfishUnknown,
+  inserirResposta,
+  getRespostasPorJellyfishUnknown,
+  getAllRespostas,
+  inserirJellyfishConhecido,
+  excluirJellyfishConhecidoPorId,
+  getJellyfishUnknownPorId, // Add the new function here
+};

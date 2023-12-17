@@ -1,6 +1,13 @@
 // server/controllers/jellyfishController.js
 
-const { getAllJellyfish, getAllJellyfishUnknown, inserirResposta, getRespostasPorJellyfishUnknown, getAllRespostas, inserirJellyfishConhecido, excluirJellyfishConhecidoPorId } = require('../models/jellyfishModel');
+const { getAllJellyfish, 
+  getAllJellyfishUnknown, 
+  inserirResposta, 
+  getRespostasPorJellyfishUnknown, 
+  getAllRespostas, 
+  inserirJellyfishConhecido, 
+  excluirJellyfishConhecidoPorId, 
+  getJellyfishUnknownPorId } = require('../models/jellyfishModel');
 
 
 
@@ -33,6 +40,24 @@ function excluirJellyfishConhecidoController(req, res) {
       res.status(500).send(error.message);
     } else {
       res.json({ message: 'Jellyfish conhecido excluído com sucesso!' });
+    }
+  });
+}
+
+
+// Function to retrieve a specific jellyfishUnknown by ID
+function getJellyfishUnknownPorIdController(req, res) {
+  const { id } = req.params;
+
+  getJellyfishUnknownPorId(id, (error, result) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else {
+      if (result) {
+        res.json(result);
+      } else {
+        res.status(404).json({ message: 'JellyfishUnknown not found' });
+      }
     }
   });
 }
@@ -109,7 +134,6 @@ function getAllRespostasController(req, res) {
   });
 }
 
-
 module.exports = {
   getAllJellyfishController,
   getAllJellyfishUnknownController,
@@ -117,5 +141,6 @@ module.exports = {
   getRespostasPorJellyfishUnknownController,
   getAllRespostasController,
   inserirJellyfishConhecidoController,
-  excluirJellyfishConhecidoController, // Adicionando o novo controlador
+  excluirJellyfishConhecidoController,
+  getJellyfishUnknownPorIdController, // Adding the new controller
 };
