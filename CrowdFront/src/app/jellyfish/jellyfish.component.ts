@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-jellyfish',
@@ -14,8 +15,10 @@ export class JellyfishComponent implements OnInit, OnDestroy {
   unknownJellyfishData: any; // Nova propriedade para os dados das jellyfish desconhecidas
   private ngUnsubscribe = new Subject<void>(); // Sujeito para desinscrever observáveis quando o componente é destruído
   jellyfishData: any; // Armazenar dados para a jellyfish selecionada
+  lastSelectedJellyfishIds: string[] = [];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
     console.log('ngOnInit chamado');
@@ -25,7 +28,7 @@ export class JellyfishComponent implements OnInit, OnDestroy {
     // Certificar-se de chamar após os dados serem carregados
     setTimeout(() => {
       const dataLength = this.getUnknownJellyfishDataLength();
-      this.selectedJellyfishId = this.generateRandomJellyfishId(1, dataLength);
+      this.selectedJellyfishId = this.generateRandomJellyfishId(0, dataLength);
 
       this.fetchJellyfishById(); // Buscar dados da jellyfish selecionada
     }, 1000); // Ajustar o valor conforme necessário
@@ -159,6 +162,9 @@ export class JellyfishComponent implements OnInit, OnDestroy {
           (data) => {
             console.log('Resposta enviada com sucesso:', data);
             // Realizar qualquer outra ação necessária após o envio bem-sucedido
+            window.location.reload();
+
+
           },
           (error) => {
             console.error('Erro ao enviar resposta:', error);
@@ -170,4 +176,6 @@ export class JellyfishComponent implements OnInit, OnDestroy {
       // Lidar com casos em que a resposta é inválida
     }
   }
+
+
 }
