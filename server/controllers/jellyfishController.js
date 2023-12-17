@@ -58,13 +58,29 @@ function getAllJellyfishUnknownController(req, res) {
   });
 }
 
-function inserirRespostaController(req, res) {
-  const { idJellyfishUnknown, respostaUtilizador } = req.body;
+// function inserirRespostaController(req, res) {
+//   const { idJellyfishUnknown, respostaUtilizador } = req.body;
 
-  inserirResposta(idJellyfishUnknown, respostaUtilizador, (error, results) => {
+//   inserirResposta(idJellyfishUnknown, respostaUtilizador, (error, results) => {
+//     if (error) {
+//       res.status(500).send(error.message);
+//     } else {
+//       res.json({ message: 'Resposta inserida com sucesso!' });
+//     }
+//   });
+// }
+
+function inserirRespostaController(req, res) {
+  console.log('Dados do corpo da requisição:', req.body);
+
+  const { id_jellyfishunknown, resposta_utilizador } = req.body;
+
+  inserirResposta(id_jellyfishunknown, resposta_utilizador, (error, results) => {
     if (error) {
+      console.error('Erro ao inserir resposta:', error);
       res.status(500).send(error.message);
     } else {
+      console.log('Resposta inserida com sucesso:', results);
       res.json({ message: 'Resposta inserida com sucesso!' });
     }
   });
