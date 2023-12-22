@@ -1,14 +1,14 @@
 <div class="jellyfish-container">
   <!-- Input field for jellyfishunknown ID -->
-  <label for="jellyfishId">ID do Jellyfish Desconhecido:</label>
+  <!-- <label for="jellyfishId">ID do Jellyfish Desconhecido:</label>
   <input type="text" id="jellyfishId" [(ngModel)]="selectedJellyfishId" />
-  <button (click)="fetchJellyfishById()">Buscar Jellyfish</button>
+  <button (click)="fetchJellyfishById()">Buscar Jellyfish</button> -->
 
   <!-- Display selected jellyfishunknown data -->
   <div *ngIf="selectedJellyfishData">
-    <h2>Jellyfish Desconhecido Selecionado:</h2>
+    <!-- <h2>Jellyfish Desconhecido Selecionado:</h2> -->
     <div class="jellyfish-item">
-      <h3>{{ selectedJellyfishData.id }} . {{ selectedJellyfishData.nome_imagem }}</h3>
+      <!-- <h3>{{ selectedJellyfishData.id }} . {{ selectedJellyfishData.nome_imagem }}</h3> -->
       <img [src]="getImagemUrlDesconhecidos(selectedJellyfishData.nome_imagem)" alt="{{ selectedJellyfishData.nome_imagem }}"
         class="jellyfish-image">
 

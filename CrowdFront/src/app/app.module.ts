@@ -8,6 +8,8 @@ import { JellyfishComponent } from './jellyfish/jellyfish.component';
 import { ApiCrowdsourcingService } from './api-crowdsourcing.service';
 import { HttpClientModule } from '@angular/common/http';
 import { JellyfishRoutingModule } from './jellyfish/jellyfish-routing.module';
+import { AdminComponent } from './admin/admin.component';
+import { JellyfishConhecidoComponent } from './jellyfish-conhecido/jellyfish-conhecido.component';
 // import { OrderByPipe } from './orderBy.pipe';
 // import { FilterPipe } from './filter.pipe';
 
@@ -16,6 +18,8 @@ import { JellyfishRoutingModule } from './jellyfish/jellyfish-routing.module';
   declarations: [
     AppComponent,
     JellyfishComponent,
+    AdminComponent,
+    JellyfishConhecidoComponent,
     // OrderByPipe,
     // FilterPipe,
   ],
