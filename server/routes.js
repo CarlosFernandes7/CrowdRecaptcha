@@ -260,9 +260,11 @@ function setupRoutes(app) {
     const nomeImagem = req.params.nomeImagem;
     const imagePath = path.join(__dirname, '../assets', 'JellyFishConhecidos', nomeImagem);
   
-    console.log('Imagem de Jelly Conhecido: ');
-    console.log('Caminho da imagem:', imagePath);
-  
+    console.log('---------------------------------------------');
+    console.log('Request de imagem de Jelly Conhecido: ');
+    console.log('Path da imagem:', imagePath);
+    console.log('---------------------------------------------');
+
     // Verifique se o arquivo existe
     if (fs.existsSync(imagePath)) {
       // Configurar o cabeçalho Content-Type
@@ -279,9 +281,12 @@ function setupRoutes(app) {
   app.get('/assets/JellyFishDesconhecidos/:nomeImagem', (req, res) => {
     const nomeImagem = req.params.nomeImagem;
     const imagePath = path.join(__dirname, '../assets', 'JellyFishDesconhecidos', nomeImagem);
-  
-    console.log('Imagem de Jelly desconhecido: ');
-    console.log('Caminho da imagem:', imagePath);
+
+    console.log('---------------------------------------------');
+    console.log('Request de imagem de Jelly desconhecido: ');
+    console.log('Path da imagem:', imagePath);
+    console.log('---------------------------------------------');
+
   
     // Verifique se o arquivo existe
     if (fs.existsSync(imagePath)) {
