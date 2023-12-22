@@ -1,7 +1,7 @@
 <div class="side-bar-container">
   <div class="search-container">
     <i class="fas fa-search"></i>
-    <input class="search-box" type="text" placeholder="Pesquisa por espécies" [(ngModel)]="searchTerm" (input)="filterJellyfish()">
+    <input class="search-box" type="text" placeholder="Pesquisa o jellyfish" [(ngModel)]="searchTerm" (input)="filterJellyfish()">
   </div>
 
   <div *ngIf="!loading && !error" class="sidebar">
