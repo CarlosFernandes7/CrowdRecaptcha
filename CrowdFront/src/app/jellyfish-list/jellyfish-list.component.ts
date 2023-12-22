@@ -30,6 +30,7 @@ export class JellyfishListComponent implements OnInit {
     this.apiService.getAllJellyfish().subscribe(
       (data: Jellyfish[]) => {
         this.jellyfishDescriptions = data;
+        this.jellyfishDescriptions.sort((a, b) => a.nome.localeCompare(b.nome)); // Ordena por nome
         this.filteredJellyfish = [...this.jellyfishDescriptions];
         this.loading = false;
       },
@@ -41,6 +42,7 @@ export class JellyfishListComponent implements OnInit {
       }
     );
   }
+  
 
   filterJellyfish(): void {
     // Filter jellyfish based on the search term
