@@ -1,14 +1,14 @@
 <!-- jellyfish.component.html -->
 
-<div class="jellyfish-container">
-  <div *ngIf="selectedJellyfishData">
-    <div class="jellyfish-item">
+<div class="jellyfish-container" *ngIf="selectedJellyfishData">
+  <div class="jellyfish-item">
+    <div class="image-container">
       <img [src]="getImagemUrlDesconhecidos(selectedJellyfishData.nome_imagem)"
         alt="{{ selectedJellyfishData.nome_imagem }}" class="jellyfish-image">
-      <label for="response">Resposta:</label>
-      <input type="text" id="response" [(ngModel)]="selectedJellyfishData.response" name="response" />
-      <button (click)="submitResponse()">Enviar Resposta</button>
-      <button (click)="mostrarProximaJellyfishDesconhecido()">Próxima</button>
     </div>
+    <label for="response">Resposta:</label>
+    <input type="text" id="response" [(ngModel)]="selectedJellyfishData.response" name="response" />
+    <button (click)="submitResponse()">Enviar Resposta</button>
+    <button (click)="mostrarProximaJellyfishDesconhecido()">Próxima</button>
   </div>
 </div>

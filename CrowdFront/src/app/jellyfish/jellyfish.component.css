@@ -1,19 +1,42 @@
 /* Estilo para o contêiner principal */
 .jellyfish-container {
-    margin: 20px;
-  }
-  
-  /* Estilo para cada item do Jellyfish */
-  .jellyfish-item {
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  /* Estilo para a imagem */
-  .jellyfish-image {
-    width: 100px; /* Substitua pelo tamanho desejado */
-    height: auto; /* Mantém a proporção original */
-    margin-right: 10px;
-  }
-  
+  margin: 20px;
+}
+
+/* Estilo para cada item do Jellyfish */
+.jellyfish-item {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+/* Estilo para a imagem */
+.image-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.jellyfish-image {
+ width: 500px;
+}
+
+/* Adiciona um estilo mais clean e elegante para as inputs e botões */
+.jellyfish-item label, .jellyfish-item input, .jellyfish-item button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.jellyfish-item button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.jellyfish-item button:hover {
+  background-color: #45a049;
+}
