@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiCrowdsourcingService } from '../api-crowdsourcing.service';
 
 @Component({
   selector: 'app-jellyfish-conhecido',
@@ -14,15 +14,14 @@ export class JellyfishConhecidoComponent implements OnInit {
   selectedJellyfish: string = '';
   allJellyfishNames: string[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiCrowdsourcingService) {}
 
   ngOnInit(): void {
     this.fetchConhecidoData();
   }
 
   fetchConhecidoData() {
-    this.http.get('http://localhost:3000/jellyfish')
-      .subscribe(
+    this.apiService.getAllJellyfish().subscribe(
         (data) => {
           this.conhecidoData = (data as any[]);
           this.allJellyfishNames = [...this.conhecidoData.map(jellyfish => jellyfish.nome)].filter(Boolean).sort();
