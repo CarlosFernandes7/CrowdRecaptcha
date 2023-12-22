@@ -1,4 +1,7 @@
 // server/routes.js
+const fs = require('fs');
+const path = require('path');
+
 
 const {
   inserirJellyfishConhecidoController,
@@ -197,6 +200,52 @@ function setupRoutes(app) {
  *         description: Erro durante a exportação.
  */
 
+  /**
+ * @swagger
+ * /assets/JellyFishConhecidos/{nomeImagem}:
+ *   get:
+ *     summary: Retorna uma imagem de Jellyfish conhecido
+ *     tags: [Jellyfish]
+ *     parameters:
+ *       - in: path
+ *         name: nomeImagem
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: O nome da imagem de Jellyfish conhecido
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna a imagem de Jellyfish conhecido.
+ *         content:
+ *           image/png:
+ *             example: [raw image data]
+ *       404:
+ *         description: Imagem não encontrada.
+ */
+
+  /**
+ * @swagger
+ * /assets/JellyFishDesconhecidos/{nomeImagem}:
+ *   get:
+ *     summary: Retorna uma imagem de Jellyfish desconhecido
+ *     tags: [Jellyfish]
+ *     parameters:
+ *       - in: path
+ *         name: nomeImagem
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: O nome da imagem de Jellyfish desconhecido
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna a imagem de Jellyfish desconhecido.
+ *         content:
+ *           image/png:
+ *             example: [raw image data]
+ *       404:
+ *         description: Imagem não encontrada.
+ */
+
   app.post('/jellyfish', inserirJellyfishConhecidoController);
   app.delete('/jellyfish/:id', excluirJellyfishConhecidoController); // Adicionando a rota para excluir um Jellyfish conhecido
   app.get('/jellyfish', getAllJellyfishController);
@@ -207,6 +256,45 @@ function setupRoutes(app) {
   app.get('/jellyfishUnknown/:id', getJellyfishUnknownPorIdController);
   app.get('/export', exportarRespostasParaJSONController);
 
+  app.get('/assets/JellyFishConhecidos/:nomeImagem', (req, res) => {
+    const nomeImagem = req.params.nomeImagem;
+    const imagePath = path.join(__dirname, '../assets', 'JellyFishConhecidos', nomeImagem);
+  
+    console.log('Imagem de Jelly Conhecido: ');
+    console.log('Caminho da imagem:', imagePath);
+  
+    // Verifique se o arquivo existe
+    if (fs.existsSync(imagePath)) {
+      // Configurar o cabeçalho Content-Type
+      res.setHeader('Content-Type', 'image/png');  // ou 'image/png' dependendo do tipo da imagem
+  
+      // Enviar os dados brutos da imagem
+      const imageStream = fs.createReadStream(imagePath);
+      imageStream.pipe(res);
+    } else {
+      res.status(404).send('Imagem não encontrada');
+    }
+  });
+
+  app.get('/assets/JellyFishDesconhecidos/:nomeImagem', (req, res) => {
+    const nomeImagem = req.params.nomeImagem;
+    const imagePath = path.join(__dirname, '../assets', 'JellyFishDesconhecidos', nomeImagem);
+  
+    console.log('Imagem de Jelly desconhecido: ');
+    console.log('Caminho da imagem:', imagePath);
+  
+    // Verifique se o arquivo existe
+    if (fs.existsSync(imagePath)) {
+      // Configurar o cabeçalho Content-Type
+      res.setHeader('Content-Type', 'image/png');  // ou 'image/png' dependendo do tipo da imagem
+  
+      // Enviar os dados brutos da imagem
+      const imageStream = fs.createReadStream(imagePath);
+      imageStream.pipe(res);
+    } else {
+      res.status(404).send('Imagem não encontrada');
+    }
+  });
 
   app.get('*', (req, res) => {
     res.send('Bem-vindo ao meu aplicativo Express com MySQL e JellyfishDB!');
