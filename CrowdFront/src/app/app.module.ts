@@ -11,7 +11,6 @@ import { JellyfishRoutingModule } from './jellyfish/jellyfish-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { JellyfishConhecidoComponent } from './jellyfish-conhecido/jellyfish-conhecido.component';
 import { ContainerComponent } from './container/container.component';
-
 // import { OrderByPipe } from './orderBy.pipe';
 // import { FilterPipe } from './filter.pipe';
 

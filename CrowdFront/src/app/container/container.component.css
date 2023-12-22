@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    justify-content: space-around; /* Distribui o espaço ao redor dos elementos */
+    align-items: flex-start; /* Alinha os elementos no topo */
+    margin: 20px;
+  }
+  
+  .column {
+    flex: 1; /* Faz com que cada coluna ocupe a mesma largura */
+    margin-right: 20px; /* Adiciona um espaçamento entre as colunas */
+  }
+  
+  /* Adaptações para dispositivos móveis */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Muda para um layout de coluna em dispositivos menores */
+    }
+  
+    .column {
+      margin-right: 0; /* Remove o espaçamento entre as colunas em dispositivos menores */
+      margin-bottom: 20px; /* Adiciona um espaçamento abaixo das colunas em dispositivos menores */
+    }
+  }
+  
+  .button {
+    display: block;
+    margin: 20px auto; /* Center the button horizontally with some margin */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+/* Adaptações para dispositivos móveis (if needed) */
+@media (max-width: 768px) {
+    /* Any responsive styles needed for smaller screens */
+}
