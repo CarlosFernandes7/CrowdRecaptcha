@@ -1,8 +1,14 @@
-<div >
-    <h2>Lista de Jellyfish Descrições</h2>
-    <ul>
-      <li *ngFor="let jellyfish  of jellyfishDescriptions">{{ jellyfish }}</li>
-    </ul>
+<div class="side-bar-container">
+  <div class="search-container">
+    <i class="fas fa-search"></i>
+    <input class="search-box" type="text" placeholder="Pesquisa por espécies" [(ngModel)]="searchTerm" (input)="filterJellyfish()">
   </div>
 
-  
+  <div *ngIf="!loading && !error" class="sidebar">
+    <div class="option-row" *ngFor="let jellyfish of filteredJellyfish">
+      <a (click)="showDetails(jellyfish)">
+        <i class="fas fa-fish"></i> {{ jellyfish.nome }}
+      </a>
+    </div>
+  </div>
+</div>

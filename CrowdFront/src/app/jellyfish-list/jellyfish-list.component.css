@@ -1,0 +1,82 @@
+/* General styles for the side bar container */
+.side-bar-container {
+  list-style: none;
+  padding: 0;
+  width: 10%;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  background: linear-gradient(45deg, #3498db, #2c3e50);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: width 0.7s, box-shadow 0.3s, background 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 30px;
+  border-radius: 0 10px 10px 0;
+}
+
+/* Hover effect to expand the sidebar on hover */
+.side-bar-container:hover {
+  width: 300px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Style for the search input */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  margin-left: 20px;
+}
+
+.side-bar-container input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  margin-left: px;
+  transition: width 1.3s;
+  color: #fff;
+}
+
+.side-bar-container:hover input {
+  width: 100%;
+}
+
+/* Style for the links in the side bar */
+.side-bar-container a {
+  display: flex;
+  align-items: center;
+  color: #ecf0f1;
+  padding: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  border-bottom: 1px solid #46627f;
+  opacity: 0.8;
+}
+
+.side-bar-container a i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.side-bar-container a:hover {
+  background-color: #1abc9c;
+  color: #fff;
+  transform: translateX(5px);
+  opacity: 1;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .side-bar-container {
+    width: 100%;
+  }
+
+  .side-bar-container:hover {
+    width: 100%;
+  }
+}

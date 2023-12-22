@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-around; /* Distribui o espaço ao redor dos elementos */
     align-items: flex-start; /* Alinha os elementos no topo */
-    margin: 20px;
   }
   
   .column {

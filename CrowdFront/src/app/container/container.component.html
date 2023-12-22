@@ -1,21 +1,21 @@
 <div class="container">
  <!-- container.component.html -->
-  <!-- First Column -->
+ <div class="column">
+  <app-jellyfish-list></app-jellyfish-list>
+</div>
   <div class="column">
       <h2>Desconhecido</h2>
       <app-jellyfish></app-jellyfish>
   </div>
 
-  <!-- Second Column -->
   <div class="column">
       <h2>Conhecidos</h2>
       <app-jellyfish-conhecido></app-jellyfish-conhecido>
   </div>
 </div>
 
-<div>
-  <h2>Lista</h2>
-</div>
+
+
 
 <!-- Button -->
 <button class="button" (click)="avancarParaProximasImagens()">Avançar para as Próximas Imagens</button>
