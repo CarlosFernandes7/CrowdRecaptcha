@@ -1,1 +1,10 @@
-<p>jellyfish-conhecido works!</p>
+<!-- jellyfish-conhecido.component.html -->
+
+<div class="jellyfish-conhecido-item" *ngIf="jellyfishAtual">
+    <h2>{{ jellyfishAtual.nome }}</h2>
+    <img [src]="getImagemUrlConhecidos(jellyfishAtual.nome_imagem)" alt="{{ jellyfishAtual.nome_imagem }}" class="jellyfish-image">
+    <p>{{ jellyfishAtual.descricao }}</p>
+    <!-- Adicione mais campos conforme necessário -->
+  </div>
+  <button (click)="mostrarProximaMedusa()">Próxima Medusa</button>
+  

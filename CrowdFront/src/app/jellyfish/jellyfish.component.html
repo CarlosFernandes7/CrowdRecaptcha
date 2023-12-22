@@ -1,21 +1,14 @@
+<!-- jellyfish.component.html -->
+
 <div class="jellyfish-container">
-  <!-- Input field for jellyfishunknown ID -->
-  <!-- <label for="jellyfishId">ID do Jellyfish Desconhecido:</label>
-  <input type="text" id="jellyfishId" [(ngModel)]="selectedJellyfishId" />
-  <button (click)="fetchJellyfishById()">Buscar Jellyfish</button> -->
-
-  <!-- Display selected jellyfishunknown data -->
   <div *ngIf="selectedJellyfishData">
-    <!-- <h2>Jellyfish Desconhecido Selecionado:</h2> -->
     <div class="jellyfish-item">
-      <!-- <h3>{{ selectedJellyfishData.id }} . {{ selectedJellyfishData.nome_imagem }}</h3> -->
-      <img [src]="getImagemUrlDesconhecidos(selectedJellyfishData.nome_imagem)" alt="{{ selectedJellyfishData.nome_imagem }}"
-        class="jellyfish-image">
-
-      <label for="response{{ selectedJellyfishData.id }}">Resposta:</label>
-      <input type="text" id="response{{ selectedJellyfishData.id }}" [(ngModel)]="selectedJellyfishData.response"
-        name="response{{ selectedJellyfishData.id }}" />
-      <button (click)="submitResponse(selectedJellyfishData)">Enviar Resposta</button>
+      <img [src]="getImagemUrlDesconhecidos(selectedJellyfishData.nome_imagem)"
+        alt="{{ selectedJellyfishData.nome_imagem }}" class="jellyfish-image">
+      <label for="response">Resposta:</label>
+      <input type="text" id="response" [(ngModel)]="selectedJellyfishData.response" name="response" />
+      <button (click)="submitResponse()">Enviar Resposta</button>
+      <button (click)="mostrarProximaJellyfishDesconhecido()">Próxima</button>
     </div>
   </div>
 </div>

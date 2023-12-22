@@ -1,0 +1,19 @@
+/* Estilo para o contêiner principal */
+.jellyfish-container {
+    margin: 20px;
+  }
+  
+  /* Estilo para cada item do Jellyfish */
+  .jellyfish-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  /* Estilo para a imagem */
+  .jellyfish-image {
+    width: 100px; /* Substitua pelo tamanho desejado */
+    height: auto; /* Mantém a proporção original */
+    margin-right: 10px;
+  }
+  
