@@ -1,18 +1,17 @@
-/* Estilo para o contêiner principal */
-.jellyfish-conhecido-container {
+/* .jellyfish-conhecido-container {
   margin: 20px;
-  text-align: center; /* Centraliza o conteúdo */
+  text-align: center; 
 }
 
-/* Estilo para cada item do Jellyfish conhecido */
+
 .jellyfish-conhecido-item {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: center; /* Centraliza o conteúdo */
+  text-align: center; 
 }
 
-/* Estilo para a imagem */
+
 .image-container {
   border: 1px solid #ccc;
   padding: 10px;
@@ -23,17 +22,110 @@
   width: 500px;
 }
 
-/* Adicione estilos conforme necessário para os outros campos */
+
 button {
   background-color: #4CAF50;
   color: white;
   padding: 10px;
   border: none;
   cursor: pointer;
-  width: 100%; /* Ocupa todo o espaço horizontal disponível */
-  box-sizing: border-box; /* Garante que padding não aumente a largura total */
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
 button:hover {
   background-color: #45a049;
+} */
+
+/* General styles for the jellyfish conhecido container */
+
+/* General styles for the jellyfish conhecido container */
+.jellyfish-conhecido-container {
+  background: linear-gradient(45deg, #3498db, #2c3e50);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the jellyfish conhecido item */
+.jellyfish-conhecido-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: #ecf0f1; /* Text color for consistency with the previous style */
+}
+
+/* Style for the heading */
+h2 {
+  margin-bottom: 10px;
+}
+
+/* Style for the image container */
+.image-container {
+  margin-bottom: 20px;
+  overflow: hidden; /* Hide overflow for potential image size variations */
+}
+
+/* Style for the jellyfish image with zoom effect */
+.jellyfish-image {
+  width: 500px;
+  height: 350px;
+  border-radius: 5px;
+  transition: transform 0.7s; /* Add transition for a smooth zoom effect */
+}
+
+/* Zoom in effect on hover for the jellyfish image */
+.image-container:hover .jellyfish-image {
+  transform: scale(1.3); /* Zoom in by 10% */
+}
+
+/* Style for the description paragraph */
+p {
+  margin-bottom: 20px;
+}
+
+/* Style for the label and dropdown */
+label {
+  margin-bottom: 10px;
+}
+
+/* Style for the dropdown */
+select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+  color: #333; /* Adjust the text color based on your design */
+}
+
+/* Style for the button with subtle animation */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Add margin between buttons */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Hover effect on buttons */
+button:hover {
+  background-color: #1abc9c;
+  color: #fff;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .jellyfish-conhecido-container {
+    margin: 10px;
+  }
 }

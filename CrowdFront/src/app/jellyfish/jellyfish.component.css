@@ -1,17 +1,14 @@
-/* Estilo para o contêiner principal */
-.jellyfish-container {
+/* .jellyfish-container {
   margin: 20px;
 }
 
-/* Estilo para cada item do Jellyfish */
 .jellyfish-item {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: center; /* Centraliza o conteúdo */
+  text-align: center; 
 }
 
-/* Estilo para a imagem */
 .image-container {
   border: 1px solid #ccc;
   padding: 10px;
@@ -22,7 +19,6 @@
 width: 500px;
 }
 
-/* Adiciona um estilo mais clean e elegante para as inputs e botões */
 .jellyfish-item label, .jellyfish-item input, .jellyfish-item button {
   display: block;
   width: 100%;
@@ -39,4 +35,85 @@ width: 500px;
 
 .jellyfish-item button:hover {
   background-color: #45a049;
+} */
+
+/* General styles for the jellyfish container */
+.jellyfish-container {
+  background: linear-gradient(45deg, #3498db, #2c3e50);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the jellyfish item */
+.jellyfish-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Style for the image container */
+.image-container {
+  margin-bottom: 20px;
+  overflow: hidden; /* Hide overflow for zoom effect */
+}
+
+/* Style for the jellyfish image */
+.jellyfish-image {
+  width: 500px;
+  height: 350px;
+  border-radius: 5px;
+  transition: transform 0.7s; /* Add transition for smooth zoom effect */
+}
+
+/* Zoom in effect on hover for the jellyfish image */
+.image-container:hover .jellyfish-image {
+  transform: scale(1.3); /* Zoom in by 10% */
+}
+
+/* Style for the label and input */
+label {
+  color: #ecf0f1;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+  color: #333; /* Adjust the text color based on your design */
+}
+
+/* Style for the buttons with subtle animation and margin */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px; /* Add margin between buttons */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Hover effect on buttons */
+button:hover {
+  background-color: #1abc9c;
+  color: #fff;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .jellyfish-container {
+    margin: 10px;
+  }
 }

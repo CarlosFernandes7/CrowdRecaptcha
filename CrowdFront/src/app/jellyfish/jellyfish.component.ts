@@ -12,11 +12,17 @@ export class JellyfishComponent implements OnInit, OnDestroy {
   desconhecidoData: any[] = [];
   selectedJellyfishData: any;
   private ngUnsubscribe = new Subject<void>();
+  selectedJellyfish: string = '';
+  allJellyfishNames: string[] = [];
+  conhecidoData: any[] = [];
+  
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.fetchDesconhecidoData();
+    this.fetchConhecidoData();
+
   }
 
   ngOnDestroy(): void {
@@ -35,6 +41,19 @@ export class JellyfishComponent implements OnInit, OnDestroy {
         },
         (error) => {
           console.error('Erro ao obter dados das medusas desconhecidas:', error);
+        }
+      );
+  }
+
+  fetchConhecidoData() {
+    this.http.get<any[]>('http://localhost:3000/jellyfish').subscribe(
+        (data) => {
+          this.conhecidoData = (data as any[]);
+          this.allJellyfishNames = [...this.conhecidoData.map(jellyfish => jellyfish.nome)].filter(Boolean).sort();
+          console.log('Dados das medusas conhecidas na imagem desconhecida:', this.conhecidoData);
+        },
+        (error) => {
+          console.error('Erro ao obter dados das medusas conhecidas:', error);
         }
       );
   }
@@ -77,4 +96,30 @@ export class JellyfishComponent implements OnInit, OnDestroy {
     // Altere a URL para incluir a rota do servidor
     return `http://localhost:3000/assets/JellyFishDesconhecidos/${nomeImagem}`;
   }
+
+  submitSelectedResponse(): void {
+    if (this.selectedJellyfish) {
+      const resposta = {
+        id_jellyfishunknown: this.selectedJellyfishData.id,
+        resposta_utilizador: this.selectedJellyfish
+      };
+  
+      this.http.post('http://localhost:3000/respostas', resposta)
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe(
+          (data) => {
+            console.log('Resposta enviada com sucesso:', data);
+            window.location.reload();
+          },
+          (error) => {
+            console.error('Erro ao enviar resposta:', error);
+          }
+        );
+    } else {
+      console.error('Resposta inválida.');
+    }
+  }
+
+  
+  
 }

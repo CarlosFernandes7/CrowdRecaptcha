@@ -6,9 +6,25 @@
       <img [src]="getImagemUrlDesconhecidos(selectedJellyfishData.nome_imagem)"
         alt="{{ selectedJellyfishData.nome_imagem }}" class="jellyfish-image">
     </div>
-    <label for="response">Resposta:</label>
-    <input type="text" id="response" [(ngModel)]="selectedJellyfishData.response" name="response" />
-    <button (click)="submitResponse()">Enviar Resposta</button>
-    <button (click)="mostrarProximaJellyfishDesconhecido()">Próxima</button>
+    <!-- <label for="response">Resposta:</label>
+    <input type="text" id="response" [(ngModel)]="selectedJellyfishData.response" name="response" /> -->
+
+    <label for="dropdownJellyfish">Escolha um nome:</label>
+    <select id="dropdownJellyfish" [(ngModel)]="selectedJellyfish">
+      <option *ngFor="let jellyfish of allJellyfishNames" [ngValue]="jellyfish">{{ jellyfish }}</option>
+    </select>
+    <!-- <button (click)="submitResponse()">Enviar Resposta</button> -->
+    <button (click)="submitSelectedResponse()">Enviar Resposta</button>
+    <!-- <button (click)="mostrarProximaJellyfishDesconhecido()">Próxima</button> -->
   </div>
+
+  <div>
+
+    <!-- <label for="dropdownJellyfish">Escolha um nome:</label>
+    <select id="dropdownJellyfish" [(ngModel)]="selectedJellyfish">
+      <option *ngFor="let jellyfish of allJellyfishNames" [ngValue]="jellyfish">{{ jellyfish }}</option>
+    </select> -->
+
+  </div>
+
 </div>

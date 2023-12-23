@@ -8,25 +8,11 @@
         class="jellyfish-image">
     </div>
     <p>{{ jellyfishAtual.descricao }}</p>
-
-
-
     <label for="dropdownJellyfish">Escolha um nome:</label>
     <select id="dropdownJellyfish" [(ngModel)]="selectedJellyfish" (change)="atualizarInputNome()">
       <option *ngFor="let jellyfish of allJellyfishNames" [ngValue]="jellyfish">{{ jellyfish }}</option>
     </select>
-
-    <!-- Text input for entering a name -->
-    <!-- <label for="inputNome">Digite o nome:</label>
-    <input type="text" id="inputNome" [(ngModel)]="enteredName" placeholder="Digite o nome da medusa"> -->
-
-    <!-- Button to check the entered name -->
     <button (click)="verificarNome()">Verificar Nome</button>
-
-    <!-- Button to show next jellyfish (only visible if the answer is correct) -->
     <button *ngIf="respostaCorreta" (click)="mostrarProximaMedusa()">Próxima Medusa</button>
   </div>
-
-
-  
 </div>
