@@ -13,7 +13,6 @@ import { JellyfishConhecidoComponent } from './jellyfish-conhecido/jellyfish-con
 import { ContainerComponent } from './container/container.component';
 import { JellyfishListComponent } from './jellyfish-list/jellyfish-list.component';
 import { HomeComponent } from './home/home.component';
-import { ToastrModule } from 'ngx-toastr';
 
 
 
