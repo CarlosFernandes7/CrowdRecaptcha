@@ -1,62 +1,200 @@
 [
   {
     "id": 1,
-    "id_jellyfishunknown": 1,
-    "resposta_utilizador": "Resposta referente ao id 1",
-    "data_resposta": "2023-12-17T18:31:22.000Z"
+    "id_jellyfishunknown": 4,
+    "resposta_utilizador": "Minha resposta",
+    "data_resposta": "2023-12-22T15:52:52.000Z"
   },
   {
     "id": 2,
-    "id_jellyfishunknown": 1,
-    "resposta_utilizador": "Resposta do id 1",
-    "data_resposta": "2023-12-17T18:31:37.000Z"
+    "id_jellyfishunknown": 2,
+    "resposta_utilizador": "oi",
+    "data_resposta": "2023-12-23T03:33:04.000Z"
   },
   {
     "id": 3,
-    "id_jellyfishunknown": 3,
-    "resposta_utilizador": "Resposta para a imagem de id 3",
-    "data_resposta": "2023-12-17T18:31:50.000Z"
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Velella velella (Veleiro)",
+    "data_resposta": "2023-12-23T03:47:01.000Z"
   },
   {
     "id": 4,
     "id_jellyfishunknown": 1,
-    "resposta_utilizador": "Resposta do id 1",
-    "data_resposta": "2023-12-17T18:32:24.000Z"
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-23T03:47:11.000Z"
   },
   {
     "id": 5,
-    "id_jellyfishunknown": 1,
-    "resposta_utilizador": "Resposta para a imagem 1",
-    "data_resposta": "2023-12-17T18:49:55.000Z"
+    "id_jellyfishunknown": 3,
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-24T03:01:39.000Z"
   },
   {
     "id": 6,
-    "id_jellyfishunknown": 1,
-    "resposta_utilizador": "Resposta agora",
-    "data_resposta": "2023-12-17T19:35:15.000Z"
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:02:36.000Z"
   },
   {
     "id": 7,
-    "id_jellyfishunknown": 2,
-    "resposta_utilizador": "Resposta agora para o 2",
-    "data_resposta": "2023-12-17T20:35:58.000Z"
+    "id_jellyfishunknown": 4,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:02:41.000Z"
   },
   {
     "id": 8,
     "id_jellyfishunknown": 5,
-    "resposta_utilizador": "Imagem 5",
-    "data_resposta": "2023-12-17T21:56:39.000Z"
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-24T03:02:46.000Z"
   },
   {
     "id": 9,
-    "id_jellyfishunknown": 5,
-    "resposta_utilizador": "Imagem 5ee",
-    "data_resposta": "2023-12-17T21:56:57.000Z"
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:03:03.000Z"
   },
   {
     "id": 10,
     "id_jellyfishunknown": 5,
-    "resposta_utilizador": "Especie und 5",
-    "data_resposta": "2023-12-17T21:57:08.000Z"
+    "resposta_utilizador": "Pelagia noctiluca (Água-viva)",
+    "data_resposta": "2023-12-24T03:03:06.000Z"
+  },
+  {
+    "id": 11,
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Phacellophora camtschatica (Medusa-ovo-estrelado)",
+    "data_resposta": "2023-12-24T03:03:19.000Z"
+  },
+  {
+    "id": 12,
+    "id_jellyfishunknown": 4,
+    "resposta_utilizador": "Aurelia aurita (Medusa-da-lua)",
+    "data_resposta": "2023-12-24T03:04:44.000Z"
+  },
+  {
+    "id": 13,
+    "id_jellyfishunknown": 3,
+    "resposta_utilizador": "Aurelia aurita (Medusa-da-lua)",
+    "data_resposta": "2023-12-24T03:05:05.000Z"
+  },
+  {
+    "id": 14,
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Bolinopsis spp.",
+    "data_resposta": "2023-12-24T03:05:22.000Z"
+  },
+  {
+    "id": 15,
+    "id_jellyfishunknown": 4,
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-24T03:06:11.000Z"
+  },
+  {
+    "id": 16,
+    "id_jellyfishunknown": 4,
+    "resposta_utilizador": "Bolinopsis spp.",
+    "data_resposta": "2023-12-24T03:10:21.000Z"
+  },
+  {
+    "id": 17,
+    "id_jellyfishunknown": 5,
+    "resposta_utilizador": "Aurelia aurita (Medusa-da-lua)",
+    "data_resposta": "2023-12-24T03:13:07.000Z"
+  },
+  {
+    "id": 18,
+    "id_jellyfishunknown": 2,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:19:24.000Z"
+  },
+  {
+    "id": 19,
+    "id_jellyfishunknown": 2,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:19:24.000Z"
+  },
+  {
+    "id": 20,
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Aurelia aurita (Medusa-da-lua)",
+    "data_resposta": "2023-12-24T03:20:11.000Z"
+  },
+  {
+    "id": 21,
+    "id_jellyfishunknown": 1,
+    "resposta_utilizador": "Aurelia aurita (Medusa-da-lua)",
+    "data_resposta": "2023-12-24T03:23:07.000Z"
+  },
+  {
+    "id": 22,
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Bolinopsis spp.",
+    "data_resposta": "2023-12-24T03:23:18.000Z"
+  },
+  {
+    "id": 23,
+    "id_jellyfishunknown": 5,
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-24T03:23:22.000Z"
+  },
+  {
+    "id": 24,
+    "id_jellyfishunknown": 6,
+    "resposta_utilizador": "Bolinopsis spp.",
+    "data_resposta": "2023-12-24T03:23:24.000Z"
+  },
+  {
+    "id": 25,
+    "id_jellyfishunknown": 3,
+    "resposta_utilizador": "Bolinopsis spp.",
+    "data_resposta": "2023-12-24T03:24:06.000Z"
+  },
+  {
+    "id": 26,
+    "id_jellyfishunknown": 2,
+    "resposta_utilizador": "Aurelia aurita (Medusa-da-lua)",
+    "data_resposta": "2023-12-24T03:24:44.000Z"
+  },
+  {
+    "id": 27,
+    "id_jellyfishunknown": 2,
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-24T03:28:38.000Z"
+  },
+  {
+    "id": 28,
+    "id_jellyfishunknown": 2,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:28:40.000Z"
+  },
+  {
+    "id": 29,
+    "id_jellyfishunknown": 5,
+    "resposta_utilizador": "Phacellophora camtschatica (Medusa-ovo-estrelado)",
+    "data_resposta": "2023-12-24T03:28:44.000Z"
+  },
+  {
+    "id": 30,
+    "id_jellyfishunknown": 2,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:28:49.000Z"
+  },
+  {
+    "id": 31,
+    "id_jellyfishunknown": 5,
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-24T03:28:51.000Z"
+  },
+  {
+    "id": 32,
+    "id_jellyfishunknown": 4,
+    "resposta_utilizador": "Chrysaora hysoscella (Medusa-compasso)",
+    "data_resposta": "2023-12-24T03:30:01.000Z"
+  },
+  {
+    "id": 33,
+    "id_jellyfishunknown": 3,
+    "resposta_utilizador": "Catostylus tagi (Medusa-do-tejo)",
+    "data_resposta": "2023-12-24T03:30:16.000Z"
   }
 ]
