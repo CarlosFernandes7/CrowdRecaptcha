@@ -5,23 +5,92 @@ import { JellyfishConhecidoComponent } from '../jellyfish-conhecido/jellyfish-co
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.css']
+  styleUrls: ['./container.component.css'],
 })
 export class ContainerComponent implements AfterViewInit {
   @ViewChild(JellyfishComponent) jellyfishComponent!: JellyfishComponent;
   @ViewChild(JellyfishConhecidoComponent) jellyfishConhecidoComponent!: JellyfishConhecidoComponent;
 
   conhecidoData: any[] = [];  // Certifique-se de que a propriedade existe
+  contadorImagens: number = 0;
+  limiteImagens: number = 5;
+  contadorErros: number = 0;
   
   ngAfterViewInit(): void {
     // Neste ponto, os ViewChilds estão inicializados
   }
+  // submeterRespostas() {
+  //   if (this.jellyfishComponent && this.jellyfishConhecidoComponent) {
+  //     const nomeVerificadoCorretamente = this.jellyfishConhecidoComponent.verificarNome();
+  //     this.contadorImagens++;
+  //     // Check if the nome was verified correctly before proceeding with the response
+  //     if (nomeVerificadoCorretamente) {
+  //       // Call the submitSelectedResponse() method on the jellyfishComponent
+  //       this.jellyfishComponent.submitSelectedResponse()
+  //         .then((resposta) => {
+  //           if (resposta) {
+  //             console.log('Contador de Imagens:', this.contadorImagens);
+  //           } else {
+  //             console.error('Falha ao submeter a resposta.');
+  //             alert('Ups. Tenta novamente');
+  //             this.contadorErros++;
+  //             console.log('Erros:', this.contadorErros);
 
-  avancarParaProximasImagens() {
-    // Certifique-se de que os métodos são chamados somente após a inicialização dos componentes
+  //           }
+  //         })
+  //         .catch(error => {
+  //           console.error('Erro ao processar a promessa:', error);
+  //         });
+  //     } else {
+  //       console.error('Nome não verificado corretamente. Não é possível submeter a resposta.');
+  //       alert('Ups. Tenta novamente');
+  //       this.contadorErros++;
+  //       console.log('Erros:', this.contadorErros);
+  //     }
+  //   }
+  // }
+  
+  submeterRespostas() {
     if (this.jellyfishComponent && this.jellyfishConhecidoComponent) {
-      this.jellyfishComponent.mostrarProximaJellyfishDesconhecido();
-      this.jellyfishConhecidoComponent.mostrarProximaMedusa();
+      const nomeVerificadoCorretamente = this.jellyfishConhecidoComponent.verificarNome();
+      this.contadorImagens++;
+  
+      // Check if the nome was verified correctly before proceeding with the response
+      if (nomeVerificadoCorretamente) {
+        // Call the submitSelectedResponse() method on the jellyfishComponent
+        this.jellyfishComponent.submitSelectedResponse()
+          .then((resposta) => {
+            if (resposta) {
+              console.log('Contador de Imagens:', this.contadorImagens);
+            } else {
+              console.error('Falha ao submeter a resposta.');
+              alert('Ups. Tenta novamente');
+              this.contadorErros++;
+              console.log('Erros:', this.contadorErros);
+  
+              // Verificar se contadorErros é maior ou igual a 10
+              if (this.contadorErros >= 3) {
+                console.log('Redirecionando para a pagina de recomeço');
+                window.location.href = 'http://localhost:4200/index';
+              }
+            }
+          })
+          .catch(error => {
+            console.error('Erro ao processar a promessa:', error);
+          });
+      } else {
+        console.error('Nome não verificado corretamente. Não é possível submeter a resposta.');
+        alert('Ups. Tenta novamente');
+        this.contadorErros++;
+        console.log('Erros:', this.contadorErros);
+  
+        // Verificar se contadorErros é maior ou igual a 10
+        if (this.contadorErros >= 3) {
+          console.log('Redirecionando para www.facebook.com');
+          window.location.href = 'http://localhost:4200/index';
+        }
+      }
     }
   }
+  
 }

@@ -1,26 +1,22 @@
+<div class="my-container">
+  <div class="container">
+    <!-- container.component.html -->
+    <app-jellyfish-list></app-jellyfish-list>
+    <div class="container-options">
+      <div class="column">
+        <!-- <h2>Desconhecido</h2> -->
+        <app-jellyfish></app-jellyfish>
+      </div>
 
-<div class="container">
- <!-- container.component.html -->
- <div class="column">
-  <app-jellyfish-list></app-jellyfish-list>
-</div>
-  <div class="column">
-      <h2>Desconhecido</h2>
-      <app-jellyfish></app-jellyfish>
+      <div class="column">
+        <!-- <h2>Conhecidos</h2> -->
+        <app-jellyfish-conhecido></app-jellyfish-conhecido>
+      </div>
+    </div>
   </div>
-
-  <div class="column">
-      <h2>Conhecidos</h2>
-      <app-jellyfish-conhecido></app-jellyfish-conhecido>
+  <!-- Move o botão para fora do div.container -->
+  <div class="button-container">
+    <!-- <button class="button" (click)="avancarParaProximasImagens()">Avançar para as Próximas Imagens</button> -->
+    <button class="button" (click)="submeterRespostas()">Submeter respostas</button>
   </div>
 </div>
-
-
-
-
-
-
-<div class="button-container">
-  <button class="button" (click)="avancarParaProximasImagens()">Avançar para as Próximas Imagens</button>
-</div>
-

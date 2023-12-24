@@ -12,8 +12,9 @@ import { AdminComponent } from './admin/admin.component';
 import { JellyfishConhecidoComponent } from './jellyfish-conhecido/jellyfish-conhecido.component';
 import { ContainerComponent } from './container/container.component';
 import { JellyfishListComponent } from './jellyfish-list/jellyfish-list.component';
-// import { OrderByPipe } from './orderBy.pipe';
-// import { FilterPipe } from './filter.pipe';
+import { HomeComponent } from './home/home.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -24,8 +25,7 @@ import { JellyfishListComponent } from './jellyfish-list/jellyfish-list.componen
     JellyfishConhecidoComponent,
     ContainerComponent,
     JellyfishListComponent,
-    // OrderByPipe,
-    // FilterPipe,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,45 +1,72 @@
+/* Reset default margin and padding */
+body, html {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Background styles for the main container */
+.my-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/background.jpg'); 
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Flex container for main content */
 .container {
-    display: flex;
-    justify-content: space-around; /* Distribui o espaço ao redor dos elementos */
-    align-items: flex-start; /* Alinha os elementos no topo */
-  }
-  
-  .column {
-    flex: 1; /* Faz com que cada coluna ocupe a mesma largura */
-    margin-right: 20px; /* Adiciona um espaçamento entre as colunas */
-  }
-  
-  /* Adaptações para dispositivos móveis */
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column; /* Muda para um layout de coluna em dispositivos menores */
-    }
-  
-    .column {
-      margin-right: 0; /* Remove o espaçamento entre as colunas em dispositivos menores */
-      margin-bottom: 20px; /* Adiciona um espaçamento abaixo das colunas em dispositivos menores */
-    }
-  }
-  
-  .button {
-    display: block;
-    margin: 20px auto; /* Center the button horizontally with some margin */
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  display: flex;
+  margin: 0;
 }
 
-.button:hover {
-    background-color: #2980b9;
+/* Flex container for columns */
+.container-options {
+  display: flex;
+  justify-content: flex-end;
+  margin: 40px;
+  padding: 100px;
+  margin-left: 12%;
+  padding-bottom: 0px;
+  width: 100%;
 }
 
-/* Adaptações para dispositivos móveis (if needed) */
-@media (max-width: 768px) {
-    /* Any responsive styles needed for smaller screens */
+/* Equal width for both columns */
+.column {
+  flex: 1;
+  margin: 0;
+}
+
+/* Styling for an information box */
+.info-box {
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Center the button */
+.button-container {
+  text-align: center;
+}
+
+/* Style for the buttons with subtle animation and margin */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px; /* Add margin between buttons */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Hover effect on buttons */
+button:hover {
+  background-color: #1abc9c;
+  color: #fff;
+  transform: scale(1.05); /* Slightly increase size on hover */
 }
 

@@ -16,6 +16,13 @@ export class JellyfishComponent implements OnInit, OnDestroy {
   allJellyfishNames: string[] = [];
   conhecidoData: any[] = [];
   
+     // Assuming you have an options property that holds the available options
+     options: any[] = [];
+
+     // Method to check if there are options available
+     hasOptions(): boolean {
+       return this.options && this.options.length > 0;
+     }
 
   constructor(private http: HttpClient) {}
 
@@ -97,28 +104,36 @@ export class JellyfishComponent implements OnInit, OnDestroy {
     return `http://localhost:3000/assets/JellyFishDesconhecidos/${nomeImagem}`;
   }
 
-  submitSelectedResponse(): void {
-    if (this.selectedJellyfish) {
-      const resposta = {
-        id_jellyfishunknown: this.selectedJellyfishData.id,
-        resposta_utilizador: this.selectedJellyfish
-      };
+  submitSelectedResponse(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      if (this.selectedJellyfish) {
+        const resposta = {
+          id_jellyfishunknown: this.selectedJellyfishData.id,
+          resposta_utilizador: this.selectedJellyfish
+        };
   
-      this.http.post('http://localhost:3000/respostas', resposta)
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(
-          (data) => {
-            console.log('Resposta enviada com sucesso:', data);
-            window.location.reload();
-          },
-          (error) => {
-            console.error('Erro ao enviar resposta:', error);
-          }
-        );
-    } else {
-      console.error('Resposta inválida.');
-    }
+        this.http.post('http://localhost:3000/respostas', resposta)
+          .pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe(
+            (data) => {
+              console.log('Resposta enviada com sucesso:', data);
+              window.location.reload();
+              resolve(true); // Resolve the promise with true for success
+            },
+            (error) => {
+              console.error('Erro ao enviar resposta:', error);
+              resolve(false); // Resolve the promise with false for failure
+            }
+          );
+      } else {
+        console.error('Resposta inválida.');
+        resolve(false); // Resolve the promise with false for failure
+        // alert('ERRO! do desconehcido.');
+      }
+    });
   }
+  
+  
 
   
   

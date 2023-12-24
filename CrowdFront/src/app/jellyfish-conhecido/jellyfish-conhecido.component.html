@@ -2,17 +2,17 @@
 
 <div class="jellyfish-conhecido-container">
   <div class="jellyfish-conhecido-item" *ngIf="jellyfishAtual">
-    <h2>{{ jellyfishAtual.nome }}</h2>
+    <!-- <h2>{{ jellyfishAtual.nome }}</h2> -->
     <div class="image-container">
       <img [src]="getImagemUrlConhecidos(jellyfishAtual.nome_imagem)" alt="{{ jellyfishAtual.nome_imagem }}"
         class="jellyfish-image">
     </div>
-    <p>{{ jellyfishAtual.descricao }}</p>
+    <!-- <p>{{ jellyfishAtual.descricao }}</p> -->
     <label for="dropdownJellyfish">Escolha um nome:</label>
     <select id="dropdownJellyfish" [(ngModel)]="selectedJellyfish" (change)="atualizarInputNome()">
       <option *ngFor="let jellyfish of allJellyfishNames" [ngValue]="jellyfish">{{ jellyfish }}</option>
     </select>
-    <button (click)="verificarNome()">Verificar Nome</button>
-    <button *ngIf="respostaCorreta" (click)="mostrarProximaMedusa()">Próxima Medusa</button>
+    <!-- <button (click)="verificarNome()">Verificar Nome</button> -->
+    <!-- <button *ngIf="respostaCorreta" (click)="mostrarProximaMedusa()">Próxima Medusa</button> -->
   </div>
 </div>

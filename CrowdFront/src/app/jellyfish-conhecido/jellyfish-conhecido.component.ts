@@ -58,14 +58,16 @@ export class JellyfishConhecidoComponent implements OnInit {
     return imageUrl;
   }
 
-  verificarNome() {
+  verificarNome(): boolean {
     this.respostaCorreta = (this.enteredName.trim().toLowerCase() === this.jellyfishAtual.nome.trim().toLowerCase());
-
+  
     if (this.respostaCorreta) {
-      alert('Nome correto!');
+      // alert('Nome correto!');
     } else {
-      alert('Nome incorreto! Tente novamente.');
+      // alert('ERRO! do conhecido.');
     }
+  
+    return this.respostaCorreta;
   }
 
   atualizarInputNome() {
