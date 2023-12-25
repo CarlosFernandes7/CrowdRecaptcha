@@ -81,8 +81,14 @@ export class ContainerComponent implements AfterViewInit {
   
               // Verificar se contadorErros é maior ou igual a 10
               if (this.contadorErros == this.limiteOportunidades) {
-                console.log('Redirecionando para a pagina de recomeço');
-                window.location.href = 'http://localhost:4200/home';
+                console.log('Redirecionando para home');
+                this.alertMessage = `Houve demasiados erros! Tenta novamente!`;
+
+                setTimeout(() => {
+                  this.contadorErros = 0;
+                  window.location.href = 'http://localhost:4200/home';
+                }, 3000);
+                // window.location.href = 'http://localhost:4200/home';
               }
             }
           })
@@ -99,8 +105,14 @@ export class ContainerComponent implements AfterViewInit {
   
         // Verificar se contadorErros é maior ou igual a 10
         if (this.contadorErros == this.limiteOportunidades) {
-          console.log('Redirecionando para www.facebook.com');
-          window.location.href = 'http://localhost:4200/home';
+          console.log('Redirecionando para home');
+          this.alertMessage = `Houve demasiados erros! Tenta novamente!`;
+
+          // window.location.href = 'http://localhost:4200/home';
+          setTimeout(() => {
+            this.contadorErros = 0;
+            window.location.href = 'http://localhost:4200/home';
+          }, 2000);
         }
       }
     }

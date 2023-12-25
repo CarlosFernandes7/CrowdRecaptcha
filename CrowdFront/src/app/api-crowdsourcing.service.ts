@@ -17,5 +17,14 @@ export class ApiCrowdsourcingService {
   }
   // Adicione métodos para outras operações conforme necessário
 
+  addJellyfish(jellyfishData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/jellyfish`, jellyfishData);
+}
+
+
+ getJellyfishList(): Observable<any> {
+    const url = 'http://localhost:3000/jellyfish';
+    return this.http.get(url);
+}
 
 }

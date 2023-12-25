@@ -17,8 +17,9 @@
   <!-- Move o botão para fora do div.container -->
   <div class="button-container">
     <!-- <button class="button" (click)="avancarParaProximasImagens()">Avançar para as Próximas Imagens</button> -->
-    <button class="button" (click)="submeterRespostas()">Submeter respostas</button>
-    
+    <!-- <button class="button" (click)="submeterRespostas()">Submeter respostas</button> -->
+    <button class="button" *ngIf="contadorErros < limiteOportunidades" (click)="submeterRespostas()">Submeter respostas</button>
+
     <div *ngIf="alertMessage" class="alert-success">
       {{ alertMessage }}
     </div>
