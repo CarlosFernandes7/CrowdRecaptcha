@@ -76,34 +76,40 @@ export class AdminComponent {
     this.isNomeEditable = false;
   }
 
-  jellyfishList: any[] = []; // Adiciona esta linha para armazenar a lista de jellyfish
+  // jellyfishList: any[] = []; // Adiciona esta linha para armazenar a lista de jellyfish
 
-  showJellyfishList: boolean = false;
+  // showJellyfishList: boolean = false;
 
-  openJellyfishList() {
-      this.apiCrowdsourcingService.getJellyfishList()
-          .subscribe(
-              jellyfishList => {
-                  console.log('Lista de Jellyfish:', jellyfishList);
-                  this.jellyfishList = jellyfishList;
-                  this.showJellyfishList = true; // Mostra a lista
-              },
-              error => {
-                  console.error('Erro ao obter a lista de Jellyfish:', error);
-              }
-          );
-  }
+  // openJellyfishList() {
+  //     this.apiCrowdsourcingService.getJellyfishList()
+  //         .subscribe(
+  //             jellyfishList => {
+  //                 console.log('Lista de Jellyfish:', jellyfishList);
+  //                 this.jellyfishList = jellyfishList;
+  //                 this.showJellyfishList = true; // Mostra a lista
+  //             },
+  //             error => {
+  //                 console.error('Erro ao obter a lista de Jellyfish:', error);
+  //             }
+  //         );
+  // }
 
-  closeJellyfishList() {
-      this.showJellyfishList = false; // Fecha a lista
-  }
+  // closeJellyfishList() {
+  //     this.showJellyfishList = false; // Fecha a lista
+  // }
 
   showAddFormFlag: boolean = false;
 
   showAddForm() {
       this.showAddFormFlag = true;
-      this.showJellyfishList = false;
+      // this.showJellyfishList = false;
       // Pode adicionar lógica adicional se necessário
+  }
+
+  selectedSection: 'add' | 'list' = 'add'; // Define a seção inicial como 'add'
+
+  showSection(section: 'add' | 'list') {
+      this.selectedSection = section;
   }
 
 

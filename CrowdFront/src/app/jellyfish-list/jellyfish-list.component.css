@@ -40,7 +40,7 @@
   width: 150px;
   margin-left: px;
   transition: width 1.3s;
-  color: #fff;  
+  color: black;  
 }
 
 .side-bar-container:hover input {

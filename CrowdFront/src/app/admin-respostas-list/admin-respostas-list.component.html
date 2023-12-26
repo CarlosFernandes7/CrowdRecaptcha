@@ -1,0 +1,32 @@
+<div class="container-table">
+    <h3>Listagem de respostas:</h3>
+     <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input class="search-box" type="text" placeholder="Nome imagem" [(ngModel)]="searchTerm" (input)="filterRespostas1()">
+        <input class="search-box" type="text" placeholder="Id Imagem" [(ngModel)]="searchTermId" (input)="filterRespostas()">
+    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id Resposta</th>
+                    <th>ID da Imagem</th>
+                    <th>Resposta</th>
+                    <th>Data de resposta</th>
+                    <th>Nome da Imagem</th>
+                    <th>Imagem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let respostas of respostasLista">
+                    <td>{{ respostas.id }}</td>
+                    <td>{{ respostas.id_jellyfishunknown }}</td>
+                    <td>{{ respostas.resposta_utilizador }}</td>
+                    <td>{{ respostas.data_resposta }}</td>
+                    <td>{{ respostas.jellyfish?.nome_imagem }}</td>
+                    <td>      
+                        <img *ngIf="respostas.jellyfish?.nome_imagem" [src]="'http://localhost:3000/assets/jellyfishDesconhecidos/' + respostas.jellyfish.nome_imagem" alt="Imagem Jellyfish">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>

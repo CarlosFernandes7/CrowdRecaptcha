@@ -1,4 +1,4 @@
-<!-- admin.component.html -->
+admin.component.html
 
 <div class="admin-container">
     <div *ngIf="message" class="message">{{ message }}</div>
@@ -37,30 +37,13 @@
       <div *ngIf="errorMessage" class="alert-error">
         {{ errorMessage }}
       </div>
+      
 </div>
-   <button (click)="openJellyfishList()">Abrir Lista de Jellyfish</button>
-   <button class="close-button" (click)="closeJellyfishList()">X</button>
 
-   <div *ngIf="showJellyfishList">
-       <h3>Listagem de Jellyfish:</h3>
-       <table>
-           <thead>
-               <tr>
-                   <th>ID</th>
-                   <th>Nome</th>
-                   <th>Descrição</th>
-                   <th>Nome da Imagem</th>
-               </tr>
-           </thead>
-           <tbody>
-               <tr *ngFor="let jellyfish of jellyfishList">
-                   <td>{{ jellyfish.id }}</td>
-                   <td>{{ jellyfish.nome }}</td>
-                   <td>{{ jellyfish.descricao }}</td>
-                   <td>{{ jellyfish.nome_imagem }}</td>
-               </tr>
-           </tbody>
-       </table>
-   </div>
+
+    <app-admin-respostas-list></app-admin-respostas-list> 
+
+  
+   <app-admin-jelly-list></app-admin-jelly-list>
 
 
