@@ -1,10 +1,17 @@
 <div class="container-table">
-    <h3>Listagem de respostas:</h3>
-     <div class="search-container">
-        <i class="fas fa-search"></i>
-        <input class="search-box" type="text" placeholder="Nome imagem" [(ngModel)]="searchTerm" (input)="filterRespostas1()">
-        <input class="search-box" type="text" placeholder="Id Imagem" [(ngModel)]="searchTermId" (input)="filterRespostas()">
+    <div class="container">
+         <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input class="search-box" type="text" placeholder="Nome imagem" [(ngModel)]="searchTerm" (input)="filterRespostas1()">
+            <input class="search-box" type="text" placeholder="Id Imagem" [(ngModel)]="searchTermId" (input)="filterRespostas()">
+        </div>
+        <div class="button-container">
+            <button class="export-button" (click)="exportAllAnswersExcel()">Exportar respostas em excel</button>
+            <button class="export-button" (click)="exportAllAnswersJSON()">Exportar respostas em Json</button>
+        </div>
     </div>
+   
+    <h3>Listagem de respostas:</h3>
         <table>
             <thead>
                 <tr>
@@ -17,16 +24,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let respostas of respostasLista">
+                <tr *ngFor="let respostas of respostasLista"  class="answers-row">
                     <td>{{ respostas.id }}</td>
                     <td>{{ respostas.id_jellyfishunknown }}</td>
                     <td>{{ respostas.resposta_utilizador }}</td>
                     <td>{{ respostas.data_resposta }}</td>
                     <td>{{ respostas.jellyfish?.nome_imagem }}</td>
-                    <td>      
+                    <td class="image-cell">      
                         <img *ngIf="respostas.jellyfish?.nome_imagem" [src]="'http://localhost:3000/assets/jellyfishDesconhecidos/' + respostas.jellyfish.nome_imagem" alt="Imagem Jellyfish">
                     </td>
                 </tr>
             </tbody>
         </table>
+
 </div>

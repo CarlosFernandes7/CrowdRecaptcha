@@ -1,39 +1,42 @@
-<div>
-    <!-- Adicione uma barra de pesquisa -->
+<div class="container-list">
     <div class="search-container">
         <i class="fas fa-search"></i>
         <input class="search-box" type="text" placeholder="Pesquisar" [(ngModel)]="searchTerm"
             (input)="filterJellyfish2()">
-        <input class="search-box" type="text" placeholder="Pesquisa pelo id" [(ngModel)]="searchTermId"
+        <input class="search-box" type="text" placeholder="Pesquisa pelo ID" [(ngModel)]="searchTermId"
             (input)="filterJellyfishId()">
-
+            <button class="button-add" routerLink="/admin/newjelly">Adicionar novo Jellyfish</button>
     </div>
-    <h3>Listagem de Jellyfish:</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Nome da Imagem</th>
-                <th>Imagem</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let jellyfish of jellyfishList">
-                <td>{{ jellyfish.id }}</td>
-                <td>{{ jellyfish.nome }}</td>
-                <td>{{ jellyfish.descricao }}</td>
-                <td>{{ jellyfish.nome_imagem }}</td>
-                <td>
-                    <img *ngIf="jellyfish.nome_imagem"
-                        [src]="'http://localhost:3000/assets/JellyFishConhecidos/' + jellyfish.nome_imagem"
-                        alt="Imagem Jellyfish Conhecido" (error)="handleImageError(jellyfish)">
-                </td>
-                <td>
-                    <button (click)="removeJellyfish(jellyfish.id)">Remover</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container-table">
+        <h1>Lista de jellyfish</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Nome da Imagem</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let jellyfish of jellyfishList" class="jellyfish-row">
+                    <td>{{ jellyfish.id }}</td>
+                    <td>{{ jellyfish.nome }}</td>
+                    <td>{{ jellyfish.descricao }}</td>
+                    <td>{{ jellyfish.nome_imagem }}</td>
+                    <td class="image-cell">      
+                        <img *ngIf="jellyfish.nome_imagem"
+                            [src]="'http://localhost:3000/assets/JellyFishConhecidos/' + jellyfish.nome_imagem"
+                            alt="Imagem Jellyfish Conhecido" (error)="handleImageError(jellyfish)">
+                    </td>
+                    <td>
+                        <button class="button-remove" (click)="removeJellyfish(jellyfish.id)">Remover</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

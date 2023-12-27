@@ -61,12 +61,12 @@ img {
     max-width: 100%;
     height: 400px;
     border-radius: 10px;
-    margin-right: 100px;
-    transition: transform 0.3s ease, margin-right 0.3s ease; /* Adiciona transição para um efeito suave */
+    margin-right: 80px;
+    transition: transform 3.3s ease, margin-right 2.3s ease; /* Adiciona transição para um efeito suave */
 }
 
 img:hover {
-    transform: translateX(-40%) scale(1.1); /* Move para a esquerda e aumenta a escala */
+    transform: translateX(-30%) scale(0.9); /* Move para a esquerda e aumenta a escala */
     margin-right: 0; /* Reduz a margem direita para zero */
 }
 

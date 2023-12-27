@@ -1,0 +1,124 @@
+/* Container Styling */
+.admin-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* Light background color */
+}
+
+/* API Docs Link Styling */
+.api-docs-link {
+  margin-bottom: 20px;
+}
+
+/* Add Jellyfish Section Styling */
+.add-jellyfish {
+  background-color: #f9f9f9; /* Light background color */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label Styling */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333; /* Dark text color */
+}
+
+/* Input Styling */
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* Light border color */
+  border-radius: 4px;
+  background-color: #f5f5f5; /* Input background color */
+  color: #333; /* Dark text color */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: #66afe9; /* Focus border color */
+  background-color: #fff; /* Focus background color */
+}
+
+/* Button Styling */
+button {
+  background-color: #007bff; /* Primary blue color */
+  color: #fff;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #b0c4de; /* Light blue for disabled state */
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Alert Styling */
+.alert-success,
+.alert-error {
+  background-color: green; /* Light background color */
+  color: white; /* Dark text color */
+  border: 1px solid #ccc; /* Light border color */
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.alert-error {
+  border-color: #e57373; /* Error border color */
+}
+
+/* Back Button Styling */
+.button-back {
+  margin-top: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #007bff;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 15px;
+  cursor: pointer;
+}
+
+.button-back:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Animation */
+.add-jellyfish,
+.alert-success,
+.alert-error {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}

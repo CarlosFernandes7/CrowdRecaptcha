@@ -1,4 +1,4 @@
-<div class="side-bar-container">
+<!-- <div class="side-bar-container">
   <div class="search-container">
     <i class="fas fa-search"></i>
     <input class="search-box" type="text" placeholder="Pesquisa o jellyfish" [(ngModel)]="searchTerm" (input)="filterJellyfish()">
@@ -8,6 +8,22 @@
     <div class="option-row" *ngFor="let jellyfish of filteredJellyfish">
       <a (click)="showDetails(jellyfish)">
         <i class="fas fa-fish"></i> {{ jellyfish.nome }}
+      </a>
+    </div>
+  </div>
+</div> -->
+
+<div class="side-bar-container">
+  <div class="search-container">
+    <i class="fas fa-search"></i>
+    <input id="jellyfishSearch" class="search-box" type="text" placeholder="Type to search" [(ngModel)]="searchTerm" (input)="filterJellyfish3()">
+  </div>
+
+  <div *ngIf="!loading && !error" class="sidebar">
+    <div class="option-row" *ngFor="let jellyfish of filteredJellyfish">
+      <a (click)="showDetails3(jellyfish)">
+        <i class="fas fa-fish"></i>
+        <span *ngIf="jellyfish.nome">{{ jellyfish.nome }}</span>
       </a>
     </div>
   </div>

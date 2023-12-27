@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminJellyListComponent } from './admin-jelly-list.component';
+import { AdminNewjellyComponent } from './admin-newjelly.component';
 
-describe('AdminJellyListComponent', () => {
-  let component: AdminJellyListComponent;
-  let fixture: ComponentFixture<AdminJellyListComponent>;
+describe('AdminNewjellyComponent', () => {
+  let component: AdminNewjellyComponent;
+  let fixture: ComponentFixture<AdminNewjellyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdminJellyListComponent]
+      declarations: [AdminNewjellyComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AdminJellyListComponent);
+    fixture = TestBed.createComponent(AdminNewjellyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

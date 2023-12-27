@@ -1,7 +1,8 @@
-O backend procura automaticamente imagens novas adicionadas a folder assets/jellyfishDesconhecidos
-Se encontrar um ficheiro novo adiciona-o na base de dados jellyfishunknown.
-
-Uma vez que não implementei totalmente uma folder partilhada entre o front e o back é necessario adicionar os assets em ambos os projetos, isto é:
-Mesmo que o back faça uma leitura do conteudo da pasta e adicione os nome da imagem á bd, o frint necessita de ter as imagens(ficheiro) para as exibir.
-Poderá ser facilmente resolvido no futuro!
+!==========================================================================================================================
+Obs: 
+É necessário na adição de novo jellyfish adicionar a imagem na folder ../assets/jellyfishconhecidos/nome_imagem.jpg
+!==========================================================================================================================
+Proximas implementações: 
+Criar user e ter acesso a respostas por user e resultados;
+Admin ter acesso a estatisticas;
 

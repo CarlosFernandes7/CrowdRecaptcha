@@ -102,4 +102,3 @@ export class AdminJellyListComponent {
     console.error(`Failed to load image for Jellyfish with ID ${jellyfish.id}`);
   }
 }
-

@@ -2,7 +2,7 @@
 .side-bar-container {
   list-style: none;
   padding: 0;
-  width: 10%;
+  width: 250px;
   position: fixed;
   height: 100%;
   overflow: auto;

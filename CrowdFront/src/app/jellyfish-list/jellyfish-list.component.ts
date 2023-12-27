@@ -29,8 +29,10 @@ export class JellyfishListComponent implements OnInit {
   fetchJellyfishDescriptions(): void {
     this.apiService.getAllJellyfish().subscribe(
       (data: Jellyfish[]) => {
-        this.jellyfishDescriptions = data;
-        this.jellyfishDescriptions.sort((a, b) => a.nome.localeCompare(b.nome)); // Ordena por nome
+        // Filter out items without a descricao
+        this.jellyfishDescriptions = data
+          .filter(jellyfish => jellyfish.nome !== null)
+          .sort((a, b) => a.nome.localeCompare(b.nome));
         this.filteredJellyfish = [...this.jellyfishDescriptions];
         this.loading = false;
       },
@@ -43,15 +45,14 @@ export class JellyfishListComponent implements OnInit {
     );
   }
   
-
-  filterJellyfish(): void {
+  filterJellyfish3(): void {
     // Filter jellyfish based on the search term
     this.filteredJellyfish = this.jellyfishDescriptions.filter(jellyfish =>
       jellyfish.nome.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
-  showDetails(jellyfish: Jellyfish): void {
+  showDetails3(jellyfish: Jellyfish): void {
     const urlFromDescription = jellyfish.descricao;
     if (urlFromDescription) {
       window.open(urlFromDescription, '_blank');

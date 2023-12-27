@@ -15,6 +15,8 @@ import { JellyfishListComponent } from './jellyfish-list/jellyfish-list.componen
 import { HomeComponent } from './home/home.component';
 import { AdminJellyListComponent } from './admin-jelly-list/admin-jelly-list.component';
 import { AdminRespostasListComponent } from './admin-respostas-list/admin-respostas-list.component';
+import { AdminNewjellyComponent } from './admin-newjelly/admin-newjelly.component';
+import { AdminApiComponent } from './admin-api/admin-api.component';
 
 
 
@@ -29,6 +31,8 @@ import { AdminRespostasListComponent } from './admin-respostas-list/admin-respos
     HomeComponent,
     AdminJellyListComponent,
     AdminRespostasListComponent,
+    AdminNewjellyComponent,
+    AdminApiComponent,
   ],
   imports: [
     BrowserModule,
