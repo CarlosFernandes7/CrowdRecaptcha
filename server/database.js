@@ -2,22 +2,16 @@
 
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '55fu77xm',
   database: 'jellyfishdb',
+  connectionLimit: 10,
 });
 
 function connectToDatabase() {
-  connection.connect((err) => {
-    if (err) {
-      console.error('Erro de conexão com o MySQL:', err);
-    } else {
-      console.log('Conectado ao MySQL!');
-    }
-  });
+  return pool.promise(); // Retorna uma versão promissificada do pool
 }
 
-//teste commit
-module.exports = { connectToDatabase, connection };
+module.exports = { connectToDatabase, pool };
