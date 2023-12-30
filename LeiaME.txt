@@ -1,6 +1,5 @@
 !==========================================================================================================================
 Obs: 
-É necessário na adição de novo jellyfish adicionar a imagem na folder ../assets/jellyfishconhecidos/nome_imagem.jpg
 !==========================================================================================================================
 Proximas implementações: 
 Criar user e ter acesso a respostas por user e resultados;
