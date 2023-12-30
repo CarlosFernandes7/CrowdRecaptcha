@@ -19,4 +19,5 @@ function connectToDatabase() {
   });
 }
 
+//teste commit
 module.exports = { connectToDatabase, connection };
