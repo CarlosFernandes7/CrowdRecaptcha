@@ -16,6 +16,18 @@ const {
    // Adicionando o novo controlador
 } = require('./controllers/jellyfishController');
 
+
+const { 
+  register,
+  login,
+  incrementNumRespostasCorretas,
+  incrementNumRespostasErradas,
+  updatePagamento,
+  getAllUsersController,
+  deleteUserById,
+} = require('../server/controllers/userController');
+
+
 function setupRoutes(app) {
 
 /**
@@ -189,6 +201,7 @@ function setupRoutes(app) {
  * /export:
  *   get:
  *     summary: Exporta respostas para um arquivo JSON.
+ *     tags: [Dados]
  *     description: Esta rota exporta todas as respostas para um arquivo JSON.
  *     responses:
  *       200:
@@ -304,6 +317,239 @@ function setupRoutes(app) {
   app.get('*', (req, res) => {
     res.send('Bem-vindo ao meu aplicativo Express com MySQL e JellyfishDB!');
   });
+
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Retorna todos os utilizadores
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna a lista de todos os utilizadores.
+ *       500:
+ *         description: Erro ao obter a lista de utilizadores.
+ */
+
+ /**
+   * @swagger
+   * /updateNumRespostasCorretas/{userId}:
+   *   put:
+   *     summary: Atualiza o número de respostas corretas de um utilizador
+   *     tags: [User]
+   *     parameters:
+   *       - in: path
+   *         name: userId
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: O ID do utilizador
+   *     requestBody:
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               novoNumero:
+   *                 type: integer
+   *             required:
+   *               - novoNumero
+   *             example:
+   *               novoNumero: 5
+   *     responses:
+   *       200:
+   *         description: Sucesso. Retorna uma mensagem indicando que o número de respostas corretas foi atualizado.
+   *       500:
+   *         description: Erro durante a atualização.
+   */
+
+  /**
+   * @swagger
+   * /updateNumRespostasErradas/{userId}:
+   *   put:
+   *     summary: Atualiza o número de respostas erradas de um utilizador
+   *     tags: [User]
+   *     parameters:
+   *       - in: path
+   *         name: userId
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: O ID do utilizador
+   *     requestBody:
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               novoNumero:
+   *                 type: integer
+   *             required:
+   *               - novoNumero
+   *             example:
+   *               novoNumero: 8
+   *     responses:
+   *       200:
+   *         description: Sucesso. Retorna uma mensagem indicando que o número de respostas erradas foi atualizado.
+   *       500:
+   *         description: Erro durante a atualização.
+   */
+
+  /**
+   * @swagger
+   * /updatePagamento/{userId}:
+   *   put:
+   *     summary: Atualiza o pagamento de um utilizador
+   *     tags: [User]
+   *     parameters:
+   *       - in: path
+   *         name: userId
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: O ID do utilizador
+   *     requestBody:
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               novoPagamento:
+   *                 type: integer
+   *             required:
+   *               - novoPagamento
+   *             example:
+   *               novoPagamento: 23
+   *     responses:
+   *       200:
+   *         description: Sucesso. Retorna uma mensagem indicando que o pagamento foi atualizado.
+   *       500:
+   *         description: Erro durante a atualização do pagamento.
+   */
+
+
+  /**
+ * @swagger
+ * /register:
+ *   post:
+ *     summary: Regista um novo utilizador
+ *     tags: [User]
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               nome:
+ *                 type: string
+ *             required:
+ *               - email
+ *               - password
+ *               - nome
+ *             example:
+ *               email: "usuario@dominio.com"
+ *               password: "senha123"
+ *               nome: "Nome do utilizador"
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna uma mensagem indicando que o utilizador foi registrado com sucesso.
+ *       500:
+ *         description: Erro durante o registro.
+ */
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Realiza o login de um utilizador
+ *     tags: [User]
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - email
+ *               - password
+ *             example:
+ *               email: "usuario@dominio.com"
+ *               password: "senha123"
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna os detalhes do utilizador logado.
+ *       401:
+ *         description: Falha na autenticação.
+ *       500:
+ *         description: Erro durante o login.
+ */
+
+
+/**
+ * @swagger
+ * /users/{userId}:
+ *   delete:
+ *     summary: Exclui um utilizador por ID
+ *     tags: [User]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: O ID do utilizador a ser excluído
+ *     responses:
+ *       200:
+ *         description: Sucesso. Retorna uma mensagem indicando que o utilizador foi excluído com sucesso.
+ *       500:
+ *         description: Erro ao excluir o utilizador.
+ */
+
+app.delete('/users/:userId', deleteUserById);
+
+  
+app.get('/users', getAllUsersController);
+
+
+// Rota para registro de utilizador
+app.post('/register', register);
+
+// Rota para login
+app.post('/login', login);
+
+
+// Rota para atualizar o número de respostas corretas
+app.put('/updateNumRespostasCorretas/:userId', incrementNumRespostasCorretas);
+
+// Rota para atualizar o número de respostas erradas
+app.put('/updateNumRespostasErradas/:userId', incrementNumRespostasErradas);
+
+// Rota para atualizar o pagamento
+// app.put('/updatePagamento/:userId', updatePagamento);
+
+// }
+
+
+app.put('/updatePagamento/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  const novoPagamento = req.body.novoPagamento;
+
+  try {
+    await updatePagamento(userId, novoPagamento);
+    res.status(200).json({ message: 'Pagamento atualizado com sucesso' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erro ao atualizar o pagamento' });
+  }
+});
 }
 
 module.exports = { setupRoutes };
