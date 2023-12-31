@@ -2,7 +2,6 @@
 const fs = require('fs');
 const path = require('path');
 
-
 const {
   inserirJellyfishConhecidoController,
   getAllJellyfishController,
@@ -16,20 +15,17 @@ const {
    // Adicionando o novo controlador
 } = require('./controllers/jellyfishController');
 
-
 const { 
   register,
   login,
   incrementNumRespostasCorretas,
   incrementNumRespostasErradas,
   updatePagamento,
-  getAllUsersController,
   deleteUserById,
-} = require('../server/controllers/userController');
-
+  fetchAllUsersController,
+} = require('./controllers/userController');
 
 function setupRoutes(app) {
-
 /**
  * @swagger
  * /jellyfish:
@@ -79,7 +75,6 @@ function setupRoutes(app) {
    *         description: Sucesso. Retorna uma mensagem indicando que o Jellyfish foi excluído com sucesso.
    */
 
-
 /**
  * @swagger
  * /jellyfishUnknown/{id}:
@@ -99,7 +94,6 @@ function setupRoutes(app) {
  *       404:
  *         description: JellyfishUnknown não encontrado.
  */
-
 
   /**
    * @swagger
@@ -129,7 +123,8 @@ function setupRoutes(app) {
    *       200:
    *         description: Sucesso. Retorna a lista de registos JellyfishUnknown
    */
-/**
+
+  /**
  * @swagger
  * /respostas:
  *   post:
@@ -259,78 +254,6 @@ function setupRoutes(app) {
  *         description: Imagem não encontrada.
  */
 
-  app.post('/jellyfish', inserirJellyfishConhecidoController);
-  app.delete('/jellyfish/:id', excluirJellyfishConhecidoController); // Adicionando a rota para excluir um Jellyfish conhecido
-  app.get('/jellyfish', getAllJellyfishController);
-  app.get('/jellyfishUnknown', getAllJellyfishUnknownController);
-  app.post('/respostas', inserirRespostaController);
-  app.get('/respostas/:idJellyfishUnknown', getRespostasPorJellyfishUnknownController);
-  app.get('/respostas', getAllRespostasController); // Adicionando a rota para obter todas as respostas
-  app.get('/jellyfishUnknown/:id', getJellyfishUnknownPorIdController);
-  app.get('/export', exportarRespostasParaJSONController);
-
-  app.get('/assets/JellyFishConhecidos/:nomeImagem', (req, res) => {
-    const nomeImagem = req.params.nomeImagem;
-    const imagePath = path.join(__dirname, '../assets', 'JellyFishConhecidos', nomeImagem);
-  
-    console.log('---------------------------------------------');
-    console.log('Request de imagem de Jelly Conhecido: ');
-    console.log('Path da imagem:', imagePath);
-    console.log('---------------------------------------------');
-
-    // Verifique se o arquivo existe
-    if (fs.existsSync(imagePath)) {
-      // Configurar o cabeçalho Content-Type
-      res.setHeader('Content-Type', 'image/png');  // ou 'image/png' dependendo do tipo da imagem
-  
-      // Enviar os dados brutos da imagem
-      const imageStream = fs.createReadStream(imagePath);
-      imageStream.pipe(res);
-    } else {
-      res.status(404).send('Imagem não encontrada');
-    }
-  });
-
-  app.get('/assets/JellyFishDesconhecidos/:nomeImagem', (req, res) => {
-    const nomeImagem = req.params.nomeImagem;
-    const imagePath = path.join(__dirname, '../assets', 'JellyFishDesconhecidos', nomeImagem);
-
-    console.log('---------------------------------------------');
-    console.log('Request de imagem de Jelly desconhecido: ');
-    console.log('Path da imagem:', imagePath);
-    console.log('---------------------------------------------');
-
-  
-    // Verifique se o arquivo existe
-    if (fs.existsSync(imagePath)) {
-      // Configurar o cabeçalho Content-Type
-      res.setHeader('Content-Type', 'image/png');  // ou 'image/png' dependendo do tipo da imagem
-  
-      // Enviar os dados brutos da imagem
-      const imageStream = fs.createReadStream(imagePath);
-      imageStream.pipe(res);
-    } else {
-      res.status(404).send('Imagem não encontrada');
-    }
-  });
-
-  app.get('*', (req, res) => {
-    res.send('Bem-vindo ao meu aplicativo Express com MySQL e JellyfishDB!');
-  });
-
-/**
- * @swagger
- * /users:
- *   get:
- *     summary: Retorna todos os utilizadores
- *     tags: [User]
- *     responses:
- *       200:
- *         description: Sucesso. Retorna a lista de todos os utilizadores.
- *       500:
- *         description: Erro ao obter a lista de utilizadores.
- */
-
  /**
    * @swagger
    * /updateNumRespostasCorretas/{userId}:
@@ -427,7 +350,6 @@ function setupRoutes(app) {
    *         description: Erro durante a atualização do pagamento.
    */
 
-
   /**
  * @swagger
  * /register:
@@ -492,7 +414,6 @@ function setupRoutes(app) {
  *         description: Erro durante o login.
  */
 
-
 /**
  * @swagger
  * /users/{userId}:
@@ -513,10 +434,69 @@ function setupRoutes(app) {
  *         description: Erro ao excluir o utilizador.
  */
 
-app.delete('/users/:userId', deleteUserById);
+app.post('/jellyfish', inserirJellyfishConhecidoController);
+app.delete('/jellyfish/:id', excluirJellyfishConhecidoController); // Adicionando a rota para excluir um Jellyfish conhecido
+app.get('/jellyfish', getAllJellyfishController);
+app.get('/jellyfishUnknown', getAllJellyfishUnknownController);
+app.post('/respostas', inserirRespostaController);
+app.get('/respostas/:idJellyfishUnknown', getRespostasPorJellyfishUnknownController);
+app.get('/respostas', getAllRespostasController); // Adicionando a rota para obter todas as respostas
+app.get('/jellyfishUnknown/:id', getJellyfishUnknownPorIdController);
+app.get('/export', exportarRespostasParaJSONController);
 
-  
-app.get('/users', getAllUsersController);
+app.get('/assets/JellyFishConhecidos/:nomeImagem', (req, res) => {
+  const nomeImagem = req.params.nomeImagem;
+  const imagePath = path.join(__dirname, '../assets', 'JellyFishConhecidos', nomeImagem);
+
+  console.log('---------------------------------------------');
+  console.log('Request de imagem de Jelly Conhecido: ');
+  console.log('Path da imagem:', imagePath);
+  console.log('---------------------------------------------');
+
+  // Verifique se o arquivo existe
+  if (fs.existsSync(imagePath)) {
+    // Configurar o cabeçalho Content-Type
+    res.setHeader('Content-Type', 'image/png');  // ou 'image/png' dependendo do tipo da imagem
+
+    // Enviar os dados brutos da imagem
+    const imageStream = fs.createReadStream(imagePath);
+    imageStream.pipe(res);
+  } else {
+    res.status(404).send('Imagem não encontrada');
+  }
+});
+
+app.get('/assets/JellyFishDesconhecidos/:nomeImagem', (req, res) => {
+  const nomeImagem = req.params.nomeImagem;
+  const imagePath = path.join(__dirname, '../assets', 'JellyFishDesconhecidos', nomeImagem);
+
+  console.log('---------------------------------------------');
+  console.log('Request de imagem de Jelly desconhecido: ');
+  console.log('Path da imagem:', imagePath);
+  console.log('---------------------------------------------');
+
+
+  // Verifique se o arquivo existe
+  if (fs.existsSync(imagePath)) {
+    // Configurar o cabeçalho Content-Type
+    res.setHeader('Content-Type', 'image/png');  // ou 'image/png' dependendo do tipo da imagem
+
+    // Enviar os dados brutos da imagem
+    const imageStream = fs.createReadStream(imagePath);
+    imageStream.pipe(res);
+  } else {
+    res.status(404).send('Imagem não encontrada');
+  }
+});
+
+app.get('/utilizador', fetchAllUsersController);
+
+
+app.get('*', (req, res) => {
+  res.send('Bem-vindo ao meu aplicativo Express com MySQL e JellyfishDB!');
+});
+
+app.delete('/users/:userId', deleteUserById);
 
 
 // Rota para registro de utilizador
@@ -532,12 +512,6 @@ app.put('/updateNumRespostasCorretas/:userId', incrementNumRespostasCorretas);
 // Rota para atualizar o número de respostas erradas
 app.put('/updateNumRespostasErradas/:userId', incrementNumRespostasErradas);
 
-// Rota para atualizar o pagamento
-// app.put('/updatePagamento/:userId', updatePagamento);
-
-// }
-
-
 app.put('/updatePagamento/:userId', async (req, res) => {
   const userId = req.params.userId;
   const novoPagamento = req.body.novoPagamento;
@@ -551,5 +525,7 @@ app.put('/updatePagamento/:userId', async (req, res) => {
   }
 });
 }
+
+
 
 module.exports = { setupRoutes };

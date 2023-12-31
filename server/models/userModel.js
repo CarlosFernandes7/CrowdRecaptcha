@@ -2,17 +2,6 @@ const bcrypt = require('bcrypt');
 const { connectToDatabase } = require('../database');
 
 
-async function getAllUsers() {
-    try {
-      const connection = await connectToDatabase();
-      const [rows] = await connection.execute('SELECT * FROM utilizadores');
-      return rows;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }
-
 // Função para excluir um usuário por ID
 async function deleteUserById(userId) {
     try {
@@ -23,9 +12,6 @@ async function deleteUserById(userId) {
       throw error;
     }
   }
-
-
-
 async function registerUser(email, password, nome) {
   try {
     const connection = await connectToDatabase();
@@ -103,12 +89,30 @@ async function updatePagamento(userId, novoPagamento) {
     }
   }
 
+
+
+
+  async function fetchAllUsers(callback) {
+    console.log('Aqui');
+
+    try {
+      const pool = await connectToDatabase();
+      const [results] = await pool.query('SELECT * FROM utilizadores');
+  
+      callback(null, results);
+    } catch (error) {
+      console.error('Erro ao obter todos os utilizadores 2', error);
+      callback(error);
+    }
+  }
+  
+
 module.exports = {
   registerUser,
   loginUser,
   updateNumRespostasCorretas,
   updateNumRespostasErradas,
   updatePagamento,
-  getAllUsers,
   deleteUserById,
+  fetchAllUsers,
 };
