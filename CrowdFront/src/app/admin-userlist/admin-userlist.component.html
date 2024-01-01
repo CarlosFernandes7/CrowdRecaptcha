@@ -1,36 +1,46 @@
 <div class="container-list">
-    <div class="container-table">
-        <h1>Lista de utilizadores</h1>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Data de registo</th>
-                    <th>Numero de respostas corretas</th>
-                    <th>Numero de respostas erradas</th>
-                    <th>Pagamento</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let utilizadores of userList" class="utilizador-row">
-                   <td>{{ utilizadores.id }}</td>
-                    <td>{{ utilizadores.nome }}</td>
-                    <td>{{ utilizadores.email }}</td>
-                    <td>{{ utilizadores.senha }}</td>
-                    <td>{{ utilizadores.data_registro }}</td>
-                    <td>{{ utilizadores.num_respostas_corretas }}</td>
-                    <td>{{ utilizadores.num_respostas_erradas }}</td>
-                    <td>{{ utilizadores.pagamento }}</td>
-                    <td>
-                        <button class="button-remove" (click)="removeUser(utilizadores.id)">Remover</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container">
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input class="search-box" type="text" placeholder="Nome utilizador" [(ngModel)]="searchTerm ">
+            <input class="search-box" type="text" placeholder="Id Utilizador" [(ngModel)]="searchTermId">
+            <div class="button-container">
+                <button class="add-button" (click)="registerUser()">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="container-table">
+            <h1>Lista de utilizadores</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Data de registo</th>
+                        <th>Numero de respostas corretas</th>
+                        <th>Numero de respostas erradas</th>
+                        <th>Pagamento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let utilizadores of userList" class="utilizador-row">
+                        <td>{{ utilizadores.id }}</td>
+                        <td>{{ utilizadores.nome }}</td>
+                        <td>{{ utilizadores.email }}</td>
+                        <td>{{ utilizadores.senha }}</td>
+                        <td>{{ utilizadores.data_registro }}</td>
+                        <td>{{ utilizadores.num_respostas_corretas }}</td>
+                        <td>{{ utilizadores.num_respostas_erradas }}</td>
+                        <td>{{ utilizadores.pagamento }}</td>
+                        <td>
+                            <button class="button-remove" (click)="removeUser(utilizadores.id)">Remover</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>

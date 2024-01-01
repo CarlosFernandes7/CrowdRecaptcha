@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ApiCrowdsourcingService } from '../api-crowdsourcing.service';
 
 @Component({
-  selector: 'app-userlist',
+  selector: 'app-admin-userlist',
   templateUrl: './admin-userlist.component.html',
   styleUrls: ['./admin-userlist.component.css']  // Importe seus estilos CSS, se houver
 })
 
 
 
-export class UserlistComponent {
+export class AdminUserlistComponent {
   searchTerm: string = '';
   searchTermId: string = '';
   // originaluserList: any[] = [];
@@ -32,7 +32,7 @@ export class UserlistComponent {
   constructor(private ApiCrowdsourcingService: ApiCrowdsourcingService) { }  // Injete o serviço adequado
 
   ngOnInit() {
-    console.log('Initializing UserlistComponent');
+    console.log('Initializing AdminUserlistComponent');
 
     this.carregarUtilizadores();
   }
@@ -60,9 +60,7 @@ export class UserlistComponent {
       );
   }
 
-  handleImageError(user: any) {
-    // Implemente a lógica para lidar com erros de imagem (se aplicável)
-  }
+
 
   carregarUtilizadores() {
     this.ApiCrowdsourcingService.getAllUsers()
@@ -78,5 +76,9 @@ export class UserlistComponent {
           console.error('Erro ao obter a lista de utilizadores:', error);
         }
       );
+  }
+
+  registerUser(){
+    
   }
 }

@@ -106,3 +106,29 @@ img {
 .red{
   background-color: red;
 }
+
+.button-container {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.add-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.add-button:hover {
+  background-color: lightgreen;
+  transform: scale(1.05);
+  cursor: pointer;
+}

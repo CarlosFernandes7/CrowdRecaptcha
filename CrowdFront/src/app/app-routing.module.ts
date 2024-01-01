@@ -12,7 +12,7 @@ import { AdminRespostasListComponent } from './admin-respostas-list/admin-respos
 import { AdminNewjellyComponent } from './admin-newjelly/admin-newjelly.component';
 import { AdminApiComponent } from './admin-api/admin-api.component';
 import { UserComponent } from './user/user.component';
-import { UserlistComponent } from './admin-userlist/admin-userlist.component';
+import { AdminUserlistComponent } from './admin-userlist/admin-userlist.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -37,7 +37,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'list', component: AdminJellyListComponent },
-      { path: 'userlist', component: UserlistComponent },
+      { path: 'userlist', component: AdminUserlistComponent },
       { path: 'answers', component: AdminRespostasListComponent },
       { path: 'newjelly', component: AdminNewjellyComponent },
       { path: 'api', component: AdminApiComponent },
