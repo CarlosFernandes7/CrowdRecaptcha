@@ -151,6 +151,7 @@ async function exportarRespostasParaJSONController(req, res) {
   }
 }
 
+
 module.exports = {
   inserirJellyfishConhecidoController,
   excluirJellyfishConhecidoController,
@@ -161,5 +162,4 @@ module.exports = {
   getRespostasPorJellyfishUnknownController,
   getAllRespostasController,
   exportarRespostasParaJSONController,
-  // ... (outras funções do controller utilizando o pool)
 };

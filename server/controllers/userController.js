@@ -106,6 +106,27 @@ async function fetchAllUsersController(req, res) {
   }
 }
 
+
+async function deleteByUserIdController(req, res) {
+  try {
+    const { userId } = req.params;
+
+    // Validate userId (check if it's a valid format, exists, etc.)
+
+    const pool = await connectToDatabase();
+    const [result] = await pool.query('DELETE FROM utilizadores WHERE id = ?', [userId]);
+
+    if (result.affectedRows > 0) {
+      res.json({ message: 'User deleted successfully' });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).send(error.message);
+  }
+}
+
 module.exports = {
   register,
   login,
@@ -114,4 +135,5 @@ module.exports = {
   updatePagamento,
   deleteUserById,
   fetchAllUsersController,
+  deleteByUserIdController,
 };

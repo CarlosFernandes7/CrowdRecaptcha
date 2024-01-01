@@ -21,8 +21,8 @@ const {
   incrementNumRespostasCorretas,
   incrementNumRespostasErradas,
   updatePagamento,
-  deleteUserById,
   fetchAllUsersController,
+  deleteByUserIdController,
 } = require('./controllers/userController');
 
 function setupRoutes(app) {
@@ -496,7 +496,7 @@ app.get('*', (req, res) => {
   res.send('Bem-vindo ao meu aplicativo Express com MySQL e JellyfishDB!');
 });
 
-app.delete('/users/:userId', deleteUserById);
+app.delete('/users/:userId',deleteByUserIdController);
 
 
 // Rota para registro de utilizador
@@ -515,7 +515,6 @@ app.put('/updateNumRespostasErradas/:userId', incrementNumRespostasErradas);
 app.put('/updatePagamento/:userId', async (req, res) => {
   const userId = req.params.userId;
   const novoPagamento = req.body.novoPagamento;
-
   try {
     await updatePagamento(userId, novoPagamento);
     res.status(200).json({ message: 'Pagamento atualizado com sucesso' });

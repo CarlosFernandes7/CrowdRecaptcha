@@ -1,17 +1,6 @@
 const bcrypt = require('bcrypt');
 const { connectToDatabase } = require('../database');
 
-
-// Função para excluir um usuário por ID
-async function deleteUserById(userId) {
-    try {
-      const connection = await connectToDatabase();
-      await connection.execute('DELETE FROM utilizadores WHERE id = ?', [userId]);
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }
 async function registerUser(email, password, nome) {
   try {
     const connection = await connectToDatabase();
@@ -34,13 +23,11 @@ async function loginUser(email, password) {
     if (rows.length === 0) {
       return null; // Usuário não encontrado
     }
-
     const user = rows[0];
     const passwordMatch = await bcrypt.compare(password, user.senha);
     if (!passwordMatch) {
       return null; // Senha incorreta
     }
-
     return user;
   } catch (error) {
     console.error(error);
@@ -89,12 +76,7 @@ async function updatePagamento(userId, novoPagamento) {
     }
   }
 
-
-
-
   async function fetchAllUsers(callback) {
-    console.log('Aqui');
-
     try {
       const pool = await connectToDatabase();
       const [results] = await pool.query('SELECT * FROM utilizadores');
@@ -105,6 +87,17 @@ async function updatePagamento(userId, novoPagamento) {
       callback(error);
     }
   }
+
+  // Função para excluir um usuário por ID
+async function deleteUserById(userId) {
+  try {
+    const connection = await connectToDatabase();
+    await connection.execute('DELETE FROM utilizadores WHERE id = ?', [userId]);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
   
 
 module.exports = {
