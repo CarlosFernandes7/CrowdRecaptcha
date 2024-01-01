@@ -11,7 +11,7 @@ export class ApiCrowdsourcingService {
   private apiUrl = 'http://localhost:3000'; // Coloque a URL da sua API aqui
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllJellyfish(): Observable<any> {
     return this.http.get(`${this.apiUrl}/jellyfish`);
@@ -20,40 +20,48 @@ export class ApiCrowdsourcingService {
 
   addJellyfish(jellyfishData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/jellyfish`, jellyfishData);
-}
+  }
 
 
- getJellyfishList(): Observable<any> {
+  getJellyfishList(): Observable<any> {
     const url = 'http://localhost:3000/jellyfish';
     return this.http.get(url);
-}
+  }
 
 
 
-getRespostasListWithJellyfish(): Observable<any[]> {
-  const respostasUrl = `${this.apiUrl}/respostas`;
-  const jellyfishUnknownUrl = `${this.apiUrl}/jellyfishUnknown`;
+  getRespostasListWithJellyfish(): Observable<any[]> {
+    const respostasUrl = `${this.apiUrl}/respostas`;
+    const jellyfishUnknownUrl = `${this.apiUrl}/jellyfishUnknown`;
 
-  // Faz um forkJoin para combinar as chamadas em paralelo
-  return forkJoin([
-    this.http.get<any[]>(respostasUrl),
-    this.http.get<any[]>(jellyfishUnknownUrl)
-  ]).pipe(
-    map(([respostas, jellyfishUnknown]) => {
-      // Mapeia os resultados para combinar as informações
-      return respostas.map(resposta => {
-        const jellyfishInfo = jellyfishUnknown.find(jellyfish => jellyfish.id === resposta.id_jellyfishunknown);
-        return {
-          ...resposta,
-          jellyfish: jellyfishInfo
-        };
-      });
-    })
-  );
-}
+    // Faz um forkJoin para combinar as chamadas em paralelo
+    return forkJoin([
+      this.http.get<any[]>(respostasUrl),
+      this.http.get<any[]>(jellyfishUnknownUrl)
+    ]).pipe(
+      map(([respostas, jellyfishUnknown]) => {
+        // Mapeia os resultados para combinar as informações
+        return respostas.map(resposta => {
+          const jellyfishInfo = jellyfishUnknown.find(jellyfish => jellyfish.id === resposta.id_jellyfishunknown);
+          return {
+            ...resposta,
+            jellyfish: jellyfishInfo
+          };
+        });
+      })
+    );
+  }
 
-removeJellyfish(jellyfishId: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/jellyfish/${jellyfishId}`);
-}
+  removeJellyfish(jellyfishId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/jellyfish/${jellyfishId}`);
+  }
 
+  removeUser(userId: string): Observable<any> {
+    const url = `${this.apiUrl}/users/${userId}`;
+    return this.http.delete(url);
+  }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/utilizador`);
+  }
 }

@@ -11,6 +11,8 @@ import { AdminJellyListComponent } from './admin-jelly-list/admin-jelly-list.com
 import { AdminRespostasListComponent } from './admin-respostas-list/admin-respostas-list.component';
 import { AdminNewjellyComponent } from './admin-newjelly/admin-newjelly.component';
 import { AdminApiComponent } from './admin-api/admin-api.component';
+import { UserComponent } from './user/user.component';
+import { UserlistComponent } from './admin-userlist/admin-userlist.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,15 +30,18 @@ const routes: Routes = [
   { path: 'jellyfish', component: JellyfishComponent },
   { path: 'jellyconhecido', component: JellyfishConhecidoComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'user', component: UserComponent },
+  // { path: 'userlist', component: UserlistComponent },
   {
     path: 'admin',
     component: AdminComponent,
     children: [
       { path: 'list', component: AdminJellyListComponent },
+      { path: 'userlist', component: UserlistComponent },
       { path: 'answers', component: AdminRespostasListComponent },
       { path: 'newjelly', component: AdminNewjellyComponent },
       { path: 'api', component: AdminApiComponent },
-      { path: '', redirectTo: 'list', pathMatch: 'full' }, // Rota padrão para '/admin'
+      { path: '', redirectTo: 'list', pathMatch: 'full' }, 
     ]
   },
   { path: 'quizz', component: ContainerComponent },
@@ -53,7 +58,7 @@ declarations: [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    FormsModule, // Adicione o FormsModule aqui
+    FormsModule, 
     
   ],
   exports: [RouterModule]

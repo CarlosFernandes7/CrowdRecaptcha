@@ -1,0 +1,36 @@
+<div class="container-list">
+    <div class="container-table">
+        <h1>Lista de utilizadores</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Data de registo</th>
+                    <th>Numero de respostas corretas</th>
+                    <th>Numero de respostas erradas</th>
+                    <th>Pagamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let utilizadores of userList" class="utilizador-row">
+                   <td>{{ utilizadores.id }}</td>
+                    <td>{{ utilizadores.nome }}</td>
+                    <td>{{ utilizadores.email }}</td>
+                    <td>{{ utilizadores.senha }}</td>
+                    <td>{{ utilizadores.data_registro }}</td>
+                    <td>{{ utilizadores.num_respostas_corretas }}</td>
+                    <td>{{ utilizadores.num_respostas_erradas }}</td>
+                    <td>{{ utilizadores.pagamento }}</td>
+                    <td>
+                        <button class="button-remove" (click)="removeUser(utilizadores.id)">Remover</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

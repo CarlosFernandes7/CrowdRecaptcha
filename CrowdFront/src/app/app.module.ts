@@ -17,6 +17,8 @@ import { AdminJellyListComponent } from './admin-jelly-list/admin-jelly-list.com
 import { AdminRespostasListComponent } from './admin-respostas-list/admin-respostas-list.component';
 import { AdminNewjellyComponent } from './admin-newjelly/admin-newjelly.component';
 import { AdminApiComponent } from './admin-api/admin-api.component';
+import { UserComponent } from './user/user.component';
+import { UserlistComponent } from './admin-userlist/admin-userlist.component';
 
 
 
@@ -33,6 +35,8 @@ import { AdminApiComponent } from './admin-api/admin-api.component';
     AdminRespostasListComponent,
     AdminNewjellyComponent,
     AdminApiComponent,
+    UserComponent,
+    UserlistComponent,
   ],
   imports: [
     BrowserModule,
