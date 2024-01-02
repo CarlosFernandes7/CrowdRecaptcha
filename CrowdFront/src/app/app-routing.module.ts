@@ -11,8 +11,10 @@ import { AdminJellyListComponent } from './admin-jelly-list/admin-jelly-list.com
 import { AdminRespostasListComponent } from './admin-respostas-list/admin-respostas-list.component';
 import { AdminNewjellyComponent } from './admin-newjelly/admin-newjelly.component';
 import { AdminApiComponent } from './admin-api/admin-api.component';
-import { UserComponent } from './user/user.component';
 import { AdminUserlistComponent } from './admin-userlist/admin-userlist.component';
+import { RegisterComponent } from './register/register.component';
+import { AdminRegisterComponent } from './admin-register/admin-register.component';
+import { LoginComponent } from './login/login.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -30,7 +32,8 @@ const routes: Routes = [
   { path: 'jellyfish', component: JellyfishComponent },
   { path: 'jellyconhecido', component: JellyfishConhecidoComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   // { path: 'userlist', component: UserlistComponent },
   {
     path: 'admin',
@@ -41,6 +44,7 @@ const routes: Routes = [
       { path: 'answers', component: AdminRespostasListComponent },
       { path: 'newjelly', component: AdminNewjellyComponent },
       { path: 'api', component: AdminApiComponent },
+      { path: 'register', component: AdminRegisterComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full' }, 
     ]
   },

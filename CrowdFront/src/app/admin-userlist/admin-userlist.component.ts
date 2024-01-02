@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCrowdsourcingService } from '../api-crowdsourcing.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-userlist',
@@ -12,6 +13,8 @@ import { ApiCrowdsourcingService } from '../api-crowdsourcing.service';
 export class AdminUserlistComponent {
   searchTerm: string = '';
   searchTermId: string = '';
+  searchTermEmail: string = '';
+
   // originaluserList: any[] = [];
 
 
@@ -29,7 +32,7 @@ export class AdminUserlistComponent {
 
   userList: any[] = [];
 
-  constructor(private ApiCrowdsourcingService: ApiCrowdsourcingService) { }  // Injete o serviço adequado
+  constructor(private ApiCrowdsourcingService: ApiCrowdsourcingService, private router: Router) { }  // Injete o serviço adequado
 
   ngOnInit() {
     console.log('Initializing AdminUserlistComponent');
@@ -39,12 +42,44 @@ export class AdminUserlistComponent {
 
 
   filterUsersByName() {
-    // Implemente a lógica de filtragem por nome
+    if (this.searchTerm.trim() === '') {
+      // If the search term is empty, reset the user list to the original list
+      this.carregarUtilizadores();
+    } else {
+      // Filter users by name using a case-insensitive search
+      this.userList = this.userList.filter(user =>
+        user.nome.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
 
-  filterUsersById() {
-    // Implemente a lógica de filtragem por ID
-  }
+  
+  // filterUsersById() {
+  //   if (this.searchTerm.trim() === '') {
+  //     // If the search term is empty, reset the user list to the original list
+  //     this.carregarUtilizadores();
+  //   } else {
+  //     // Filter users by name using a case-insensitive search
+  //     this.userList = this.userList.filter(user =>
+  //       user.id.toLowerCase().includes(this.searchTerm.toLowerCase())
+  //     );
+  //   }
+  // }
+
+   
+  // filterUsersByEmail() {
+  //   if (this.searchTerm.trim() === '') {
+  //     // If the search term is empty, reset the user list to the original list
+  //     this.carregarUtilizadores();
+  //   } else {
+  //     // Filter users by name using a case-insensitive search
+  //     this.userList = this.userList.filter(user =>
+  //       user.email.toLowerCase().includes(this.searchTerm.toLowerCase())
+  //     );
+  //   }
+  // }
+
+
 
   removeUser(userId: string) {
     this.ApiCrowdsourcingService.removeUser(userId)
@@ -78,7 +113,7 @@ export class AdminUserlistComponent {
       );
   }
 
-  registerUser(){
-    
-  }
+  redirectToRegister() {
+    this.router.navigate(['/admin/register']);
+}
 }

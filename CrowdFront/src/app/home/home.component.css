@@ -1,4 +1,5 @@
 /* landing-page.component.css */
+@import 'animate.css/animate.css';
 
 body {
     font-family: 'Roboto', sans-serif; /* Substitua 'Roboto' pela fonte desejada */
@@ -109,7 +110,6 @@ p {
     transform: scale(1.05);
 }
 
-@import 'animate.css/animate.css';
 
 #startButton.animated {
     animation-duration: 1s;

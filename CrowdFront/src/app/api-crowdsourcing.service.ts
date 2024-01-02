@@ -64,4 +64,9 @@ export class ApiCrowdsourcingService {
   getAllUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}/utilizador`);
   }
+
+  registerUser(userData: any): Observable<any> {
+    const url = `${this.apiUrl}/register`;
+    return this.http.post(url, userData);
+  }
 }

@@ -3,10 +3,12 @@
     <div class="container">
         <div class="search-container">
             <i class="fas fa-search"></i>
-            <input class="search-box" type="text" placeholder="Nome utilizador" [(ngModel)]="searchTerm ">
-            <input class="search-box" type="text" placeholder="Id Utilizador" [(ngModel)]="searchTermId">
+            <input class="search-box" type="text" placeholder="Nome utilizador" [(ngModel)]="searchTerm" (input)="filterUsersByName()">
+            <!-- <input class="search-box" type="text" placeholder="Id Utilizador" [(ngModel)]="searchTermId" (input)="filterUsersById()">
+            <input class="search-box" type="text" placeholder="Email" [(ngModel)]="searchTermEmail" (input)="filterUsersByEmail()"> -->
+
             <div class="button-container">
-                <button class="add-button" (click)="registerUser()">Adicionar</button>
+                <button class="add-button" (click)="redirectToRegister()">Adicionar</button>
             </div>
         </div>
 
