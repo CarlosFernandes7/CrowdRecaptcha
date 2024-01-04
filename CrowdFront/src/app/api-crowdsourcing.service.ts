@@ -28,6 +28,11 @@ export class ApiCrowdsourcingService {
     return this.http.get(url);
   }
 
+  getJellyfishUnknownList(): Observable<any> {
+    const url = 'http://localhost:3000/jellyfishunknown';
+    return this.http.get(url);
+  }
+
 
 
   getRespostasListWithJellyfish(): Observable<any[]> {

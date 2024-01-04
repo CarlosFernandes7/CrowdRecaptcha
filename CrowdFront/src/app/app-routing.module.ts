@@ -15,6 +15,7 @@ import { AdminUserlistComponent } from './admin-userlist/admin-userlist.componen
 import { RegisterComponent } from './register/register.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { LoginComponent } from './login/login.component';
+import { AdminJellyfishunknownListComponent } from './admin-jellyfishunknown-list/admin-jellyfishunknown-list.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'newjelly', component: AdminNewjellyComponent },
       { path: 'api', component: AdminApiComponent },
       { path: 'register', component: AdminRegisterComponent },
+      { path: 'listunknown', component: AdminJellyfishunknownListComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full' }, 
     ]
   },

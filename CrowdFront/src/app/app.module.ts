@@ -21,6 +21,7 @@ import { AdminUserlistComponent } from './admin-userlist/admin-userlist.componen
 import { RegisterComponent } from './register/register.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { LoginComponent } from './login/login.component';
+import { AdminJellyfishunknownListComponent } from './admin-jellyfishunknown-list/admin-jellyfishunknown-list.component';
 
 
 
@@ -41,6 +42,7 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     AdminRegisterComponent,
     LoginComponent,
+    AdminJellyfishunknownListComponent,
   ],
   imports: [
     BrowserModule,
