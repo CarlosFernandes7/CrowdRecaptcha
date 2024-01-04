@@ -1,5 +1,65 @@
 const fs = require('fs');
 const { connectToDatabase } = require('../database');
+const path = require('path');
+
+
+// Função para verificar imagens novas na pasta assets/jellyfishDesconhecidos
+async function verificarImagensNovas() {
+  try {
+    const pool = await connectToDatabase();
+
+    // Obter todas as imagens conhecidas no banco de dados
+    const [results] = await pool.query('SELECT nome_imagem FROM jellyfishunknown');
+
+    const imagensConhecidas = results.map((result) => result.nome_imagem);
+
+    // Caminho para a pasta assets/jellyfishDesconhecidos
+    const pastaAssets = path.join(__dirname, '../../assets', 'jellyfishDesconhecidos');
+
+    // Ler o conteúdo da pasta assets/jellyfishDesconhecidos
+    const arquivos = await fs.promises.readdir(pastaAssets);
+
+    // Filtrar imagens novas
+    const imagensNovas = arquivos.filter((arquivo) => !imagensConhecidas.includes(arquivo));
+
+    if (imagensNovas.length > 0) {
+      console.log('Imagens novas encontradas:', imagensNovas);
+
+      // Adicionando um log para cada nova imagem encontrada
+      imagensNovas.forEach((novaImagem) => {
+        console.log(`Nova imagem encontrada: ${novaImagem}`);
+      });
+
+      return imagensNovas;
+    } else {
+      console.log('Nenhuma imagem nova encontrada.');
+      return [];
+    }
+  } catch (error) {
+    console.error('Erro ao verificar imagens novas:', error);
+    throw error;
+  }
+}
+
+
+
+// Função para inserir novas imagens na tabela jellyfishunknown
+async function inserirImagensNovasNoBanco(imagensNovas) {
+  try {
+    const pool = await connectToDatabase();
+
+    // Inserir novas imagens na tabela jellyfishunknown
+    for (const nomeImagem of imagensNovas) {
+      await pool.query('INSERT INTO jellyfishunknown (nome_imagem) VALUES (?)', [nomeImagem]);
+      console.log(`Imagem inserida no banco de dados: ${nomeImagem}`);
+    }
+
+    console.log('Inserção no banco de dados concluída.');
+  } catch (error) {
+    console.error('Erro ao inserir imagens no banco de dados:', error);
+    throw error;
+  }
+}
 
 // Função para inserir um "jellyfish" conhecido no banco de dados
 async function inserirJellyfishConhecido(data, callback) {
@@ -76,63 +136,7 @@ async function getAllJellyfishUnknown(callback) {
   }
 }
 
-// Função para carregar imagens para o banco de dados
-async function carregarImagensParaBD(caminhoDaPasta, callback) {
-  try {
-    const pool = await connectToDatabase();
 
-    // ... (restante do código)
-
-    if (dadosInsercao.length > 0) {
-      inserirImagensNoBD(dadosInsercao, callback);
-    } else {
-      callback(null, []);
-    }
-  } catch (error) {
-    console.error('Erro ao carregar imagens para o banco de dados:', error);
-    callback(error);
-  }
-}
-
-// Função para inserir imagens no banco de dados
-async function inserirImagensNoBD(dados, callback) {
-  try {
-    const pool = await connectToDatabase();
-    const sql = 'INSERT INTO jellyfishUnknown (nome_imagem) VALUES ?';
-    const valores = dados.map(({ nome_imagem }) => [nome_imagem]);
-
-    const [result] = await pool.query(sql, [valores]);
-
-    console.log('Imagens adicionadas com sucesso.');
-    callback(null, result);
-  } catch (error) {
-    console.error('Erro ao inserir imagens no banco de dados:', error);
-    callback(error);
-  }
-}
-
-// Função para verificar novas imagens
-function verificarNovasImagens() {
-  try {
-    const caminhoDaPasta = '../assets/JellyFishDesconhecidos';
-
-    setInterval(async () => {
-      console.log('Verificando novas imagens...');
-      await carregarImagensParaBD(caminhoDaPasta, (err, results) => {
-        if (err) {
-          console.error('Erro ao carregar imagens para o banco de dados:', err);
-        } else if (results.length > 0) {
-          console.log('Imagens carregadas com sucesso.');
-        }
-      });
-    }, 5000);
-  } catch (error) {
-    console.error('Erro ao verificar novas imagens:', error);
-  }
-}
-
-// Inicia o processo de verificação de novas imagens
-verificarNovasImagens();
 
 // Função para inserir uma resposta no banco de dados
 async function inserirResposta(id_jellyfishunknown, resposta_utilizador,id_utilizador, callback) {
@@ -210,6 +214,8 @@ async function exportarRespostasParaJSON(callback) {
   }
 }
 
+
+
 module.exports = {
   getAllJellyfish,
   getAllJellyfishUnknown,
@@ -220,4 +226,6 @@ module.exports = {
   excluirJellyfishConhecidoPorId,
   getJellyfishUnknownPorId,
   exportarRespostasParaJSON,
+  verificarImagensNovas,
+  inserirImagensNovasNoBanco
 };

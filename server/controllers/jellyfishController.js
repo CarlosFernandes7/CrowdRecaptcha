@@ -2,6 +2,12 @@
 const fs = require('fs');
 const { connectToDatabase } = require('../database');
 
+
+
+
+
+
+
 async function inserirJellyfishConhecidoController(req, res) {
   try {
     const { nome, descricao, nome_imagem } = req.body;
