@@ -25,6 +25,7 @@ const {
   deleteByUserIdController,
 } = require('./controllers/userController');
 
+
 function setupRoutes(app) {
 /**
  * @swagger
@@ -524,6 +525,7 @@ app.put('/updatePagamento/:userId', async (req, res) => {
   }
 });
 }
+
 
 
 

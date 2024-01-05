@@ -215,6 +215,29 @@ async function exportarRespostasParaJSON(callback) {
 }
 
 
+async function downloadAndSaveImage(url, localPath) {
+  try {
+    const response = await axios({
+      method: 'get',
+      url: url,
+      responseType: 'stream',
+    });
+
+    const imagePath = path.join(__dirname, localPath); // __dirname é o diretório atual do script
+
+    response.data.pipe(fs.createWriteStream(imagePath));
+
+    return new Promise((resolve, reject) => {
+      response.data.on('end', () => resolve(imagePath));
+      response.data.on('error', (err) => reject(err));
+    });
+  } catch (error) {
+    console.error('Erro ao baixar a imagem:', error);
+    throw error;
+  }
+}
+
+
 
 module.exports = {
   getAllJellyfish,
